@@ -2,19 +2,152 @@
 <html lang="sq">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Taste Home App</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7b2d26">
+<title>Taste Home Pro</title>
 <style>
-body{font-family:Arial;margin:20px;background:#f6f1ea}
-.card{background:#fff;padding:16px;border-radius:12px;max-width:700px;margin:auto}
+:root{--brand:#7b2d26;--green:#176b45;--orange:#c87913;--red:#b3261e;--blue:#315f8a;--bg:#f6f1ea;--card:#fff;--muted:#756d66}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:#241f1c}
+header{position:sticky;top:0;z-index:10;background:var(--brand);color:#fff;padding:14px 16px;box-shadow:0 2px 9px #0003}
+header h1{margin:0;font-size:21px} header small{opacity:.9}
+nav{display:flex;gap:6px;padding:10px 8px;position:sticky;top:68px;background:var(--bg);z-index:9}
+button,input,textarea,select{font:inherit} button{border:0;border-radius:11px;padding:11px 10px;font-weight:700;cursor:pointer}
+.navbtn{flex:1;background:#e8ded4;font-size:13px}.navbtn.active{background:var(--brand);color:#fff}
+main{max-width:760px;margin:auto;padding:0 12px 28px}.card{background:#fff;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 2px 9px #0001}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.table{background:#fff;border:2px solid transparent;border-radius:16px;padding:15px 10px;text-align:center;box-shadow:0 2px 9px #0001}
+.table.active{border-color:var(--green)}.table.waiting{border-color:var(--orange)}.table.payment{border-color:var(--red)}
+.table h3{margin:0 0 4px}.table .sub{font-size:12px;color:var(--muted);min-height:18px}.amount{font-size:20px;color:var(--green);font-weight:900}.statusline{font-size:12px;margin-top:4px}
+.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee}.row:last-child{border-bottom:0}
+.name{font-weight:800}.price,.meta{font-size:13px;color:var(--muted)}.counter{display:flex;align-items:center;gap:8px}.counter b{min-width:26px;text-align:center;font-size:18px}
+.minus,.plus{width:42px;height:42px;padding:0;font-size:24px}.minus{background:#eee}.plus{background:var(--brand);color:#fff}
+input,textarea,select{width:100%;padding:11px;border:1px solid #d5ccc3;border-radius:10px;background:#fff} label{display:block;font-size:13px;color:var(--muted);margin:8px 0 4px}
+.total{font-size:24px;font-weight:900;color:var(--green);margin:10px 0}.actions,.toolbar,.paybuttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.share{background:#25D366}.print{background:#34495e;color:#fff}.close{background:var(--green);color:#fff}.delete{background:#f4d7d4;color:var(--red)}.back{background:#e8ded4}
+.hidden{display:none}.badge{display:inline-block;background:#eee;border-radius:999px;padding:4px 8px;font-size:12px;margin:3px 5px 3px 0}
+.status-grid,.request-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.status-btn,.request-btn{background:#eee}.status-btn.selected{background:var(--brand);color:#fff}.request-btn.selected{background:var(--orange);color:#fff}
+.next{width:100%;background:var(--orange);color:#fff;margin-top:10px}.paybtn{background:#eee}.paybtn.selected{background:var(--green);color:#fff}
+.people{font-size:24px;font-weight:900;text-align:center;color:var(--brand);padding:4px}
+.drink{border-bottom:1px solid #eee;padding:12px 0}.drink:last-child{border:0}.drinktop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.delivery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;text-align:center;font-size:12px}.delivery b{display:block;font-size:18px}.pending{color:var(--red)}
+.delivered{width:100%;margin-top:8px;background:var(--orange);color:#fff}.delivered:disabled{background:#ddd;color:#888}
+.kitchen-card{border-left:6px solid var(--green)}.kitchen-card.waiting{border-left-color:var(--orange)}.kitchen-card.payment{border-left-color:var(--red)}
+.kitchen-title{display:flex;justify-content:space-between;gap:10px;align-items:center}.kitchen-title h3{margin:0}
+.invoice-line{display:flex;justify-content:space-between;margin:5px 0}.empty{text-align:center;color:var(--muted);padding:28px}
+.statsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:#fff;border-radius:14px;padding:12px;box-shadow:0 2px 9px #0001}.stat b{display:block;font-size:21px;color:var(--green)}
+.chart{display:flex;align-items:flex-end;gap:5px;height:220px;padding-top:15px;overflow:hidden}.barwrap{flex:1;text-align:center;font-size:9px}.bar{background:var(--brand);min-height:2px;border-radius:5px 5px 0 0}.barval{font-size:8px;white-space:nowrap;transform:rotate(-45deg);margin-bottom:8px}
+#printArea{display:none}@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media print{body *{visibility:hidden!important}#printArea,#printArea *{visibility:visible!important}#printArea{display:block!important;position:absolute;left:0;top:0;width:100%;padding:20px;background:#fff}}
 </style>
 </head>
 <body>
+<header><h1>Taste Home Pro</h1><small>Shërbim, fatura, xhiro & statistika</small></header>
+<nav>
+<button id="tabTables" class="navbtn active" onclick="showTables()">Tavolinat</button>
+<button id="tabKitchen" class="navbtn" onclick="showKitchen()">Shërbimi</button>
+<button id="tabHistory" class="navbtn" onclick="showHistory()">Historia</button>
+<button id="tabStats" class="navbtn" onclick="showStats()">📊 Statistika</button>
+</nav>
+<main>
+<section id="tablesView"><div class="card"><label>Data e punës</label><input id="workDate" type="date" onchange="saveWorkDate()"></div><div id="tables" class="grid"></div></section>
+
+<section id="tableView" class="hidden">
+<button class="back" onclick="showTables()">← Tavolinat</button>
 <div class="card">
-<h1>Taste Home App</h1>
-<p>Ky është skedari <b>index.html</b> për aplikacionin Taste Home.</p>
-<p>Nëse e ngarkon në GitHub Pages ose Netlify, do të hapet si aplikacion web.</p>
-<p>Versioni i plotë mund të zëvendësohet me kodin e aplikacionit që kemi përgatitur.</p>
+<label>Emri i tavolinës</label><input id="tableName" placeholder="p.sh. Family Smith" oninput="updateDetails()">
+<div id="autoPeople" class="people">👥 0 persona</div>
+<label>Shënime</label><textarea id="notes" rows="2" placeholder="p.sh. pa alkool..." oninput="updateDetails()"></textarea>
+<label>Pagesa</label><div class="paybuttons"><button id="cashBtn" class="paybtn" onclick="setPayment('Cash')">💵 CASH</button><button id="cardBtn" class="paybtn" onclick="setPayment('Card')">💳 CARD</button></div>
+<div id="cardNoteBox" class="hidden"><label>Shënim Card</label><input id="cardNote" placeholder="p.sh. Visa, 2 pagesa..." oninput="updateDetails()"></div>
 </div>
+<h2 id="tableTitle"></h2>
+<div class="card"><h3>Statusi i shërbimit</h3><div id="statusButtons" class="status-grid"></div><button class="next" onclick="nextStage()">NEXT →</button></div>
+<div class="card"><h3>Kërkesa për stafin</h3><div id="requestButtons" class="request-grid"></div></div>
+<div class="card"><h3>Menu</h3><div id="menus"></div></div>
+<div class="card"><h3>Pijet</h3><div class="meta">Porositur = hyn në faturë · Çuar = është shërbyer · Për t'u çuar = pret shërbim</div><div id="drinks"></div></div>
+<div class="card"><div id="updated" class="meta"></div><div id="tableTotal" class="total"></div>
+<div class="actions"><button class="share" onclick="sendKitchenUpdate()">Kitchen Update</button><button class="share" onclick="shareCurrent()">Dërgo faturën</button><button class="print" onclick="printCurrent()">Printo faturën</button><button class="close" onclick="closeCurrent()">Mbyll tavolinën</button><button class="delete" onclick="clearCurrent()">Fshij pa ruajtur</button><button class="back" onclick="showTables()">Kthehu</button></div></div>
+</section>
+
+<section id="kitchenView" class="hidden"><div id="kitchenList"></div></section>
+<section id="historyView" class="hidden"><div class="card"><label>Shfaq faturat për datën</label><input id="historyDate" type="date" onchange="drawHistory()"></div><div class="toolbar"><button class="share" onclick="shareDaily()">Share xhiron</button><button class="delete" onclick="clearHistoryForDate()">Fshij datën</button></div><div id="dailyTotal" class="card total"></div><div id="historyBox"></div></section>
+<section id="statsView" class="hidden"><div class="card"><label>Viti</label><select id="statsYear" onchange="drawStats()"></select></div><div id="statsCards" class="statsgrid"></div><div class="card"><h3>Persona sipas muajit</h3><div id="peopleChart" class="chart"></div></div><div class="card"><h3>Xhiro sipas muajit</h3><div id="revenueChart" class="chart"></div></div></section>
+<div id="printArea"></div>
+</main>
+<script>
+const ITEMS=[
+ {k:"normal",n:"Menu Normale",p:25,type:"menu"},{k:"veg",n:"Menu Vegjet",p:25,type:"menu"},{k:"kids",n:"Menu Kids",p:15,type:"menu"},
+ {k:"beer",n:"Birrë",p:3.5,type:"drink"},{k:"red",n:"Verë e kuqe",p:2.5,type:"drink"},{k:"white",n:"Verë e bardhë",p:2.5,type:"drink"},{k:"juice",n:"Grape Juice",p:2.5,type:"drink"}
+];
+const STAGES=["Përgatit Aperitiv 1","Përgatit Aperitiv 2","Përgatit Supën","Përgatit Qofte + Imam","Përgatit Ëmbëlsirë"];
+const REQUESTS=["💧 Ujë","🍞 Bukë"];
+const TABLES=15;
+const DB_KEY="taste_home_tables_v9",HIST_KEY="taste_home_history_v9",DATE_KEY="taste_home_workdate_v9";
+let db=JSON.parse(localStorage.getItem(DB_KEY)||"{}"),history=JSON.parse(localStorage.getItem(HIST_KEY)||"[]"),current=1;
+const $=id=>document.getElementById(id);
+function blank(t){const q={},sent={},served={};ITEMS.forEach(i=>{q[i.k]=0;sent[i.k]=0;served[i.k]=0});return{q,sent,served,name:"Tavolina "+t,persons:0,notes:"",updated:null,stage:0,requests:{},payment:"Cash",cardNote:""}}
+for(let t=1;t<=TABLES;t++){
+ if(!db[t])db[t]=blank(t); if(!db[t].q)db[t].q={}; if(!db[t].sent)db[t].sent={}; if(!db[t].served)db[t].served={};
+ if(db[t].q.menu!=null&&db[t].q.normal==null)db[t].q.normal=db[t].q.menu||0;
+ if(db[t].sent.menu!=null&&db[t].sent.normal==null)db[t].sent.normal=db[t].sent.menu||0;
+ ITEMS.forEach(i=>{if(db[t].q[i.k]==null)db[t].q[i.k]=0;if(db[t].sent[i.k]==null)db[t].sent[i.k]=0;if(db[t].served[i.k]==null)db[t].served[i.k]=0});
+ if(!db[t].payment)db[t].payment="Cash";if(db[t].cardNote==null)db[t].cardNote="";if(typeof db[t].stage!=="number")db[t].stage=0;if(!db[t].requests)db[t].requests={};
+}
+function save(){localStorage.setItem(DB_KEY,JSON.stringify(db));localStorage.setItem(HIST_KEY,JSON.stringify(history))}
+function money(v){return "€"+Number(v||0).toFixed(2)} function stamp(){return new Date().toLocaleString("sq-AL")}
+function total(t){return ITEMS.reduce((s,i)=>s+(db[t].q[i.k]||0)*i.p,0)}
+function people(t){return ["normal","veg","kids"].reduce((s,k)=>s+(db[t].q[k]||0),0)}
+function pending(t,k){return Math.max(0,(db[t].q[k]||0)-(db[t].served[k]||0))}
+function hasPending(t){return ITEMS.filter(i=>i.type==="drink").some(i=>pending(t,i.k)>0)}
+function hasRequests(t){return Object.values(db[t].requests||{}).some(Boolean)}
+function isoDate(){return $("workDate").value||new Date().toISOString().slice(0,10)}
+$("workDate").value=localStorage.getItem(DATE_KEY)||new Date().toISOString().slice(0,10);$("historyDate").value=$("workDate").value;
+function hideAll(){document.querySelectorAll("main section").forEach(x=>x.classList.add("hidden"));["tabTables","tabKitchen","tabHistory","tabStats"].forEach(x=>$(x).classList.remove("active"))}
+function saveWorkDate(){localStorage.setItem(DATE_KEY,$("workDate").value);$("historyDate").value=$("workDate").value}
+function showTables(){hideAll();$("tablesView").classList.remove("hidden");$("tabTables").classList.add("active");drawTables()}
+function showKitchen(){hideAll();$("kitchenView").classList.remove("hidden");$("tabKitchen").classList.add("active");drawKitchen()}
+function showHistory(){hideAll();$("historyView").classList.remove("hidden");$("tabHistory").classList.add("active");$("historyDate").value=$("workDate").value;drawHistory()}
+function showStats(){hideAll();$("statsView").classList.remove("hidden");$("tabStats").classList.add("active");fillYears();drawStats()}
+function drawTables(){
+ $("tables").innerHTML="";
+ for(let t=1;t<=TABLES;t++){const el=document.createElement("button");let cls="";if(db[t].stage===STAGES.length-1)cls="payment";else if(hasPending(t)||hasRequests(t))cls="waiting";else if(total(t)>0)cls="active";
+ el.className="table "+cls;el.innerHTML=`<h3>${db[t].name||"Tavolina "+t}</h3><div class="sub">👥 ${people(t)} persona${hasPending(t)?" · 🥤 pije në pritje":""}</div><div class="amount">${money(total(t))}</div><div class="statusline">${STAGES[db[t].stage]}</div>`;el.onclick=()=>openTable(t);$("tables").appendChild(el)}
+}
+function openTable(t){current=t;hideAll();$("tableView").classList.remove("hidden");$("tableTitle").textContent="Tavolina "+t;$("tableName").value=db[t].name||"";$("notes").value=db[t].notes||"";$("cardNote").value=db[t].cardNote||"";drawCurrent()}
+function updateDetails(){db[current].name=$("tableName").value.trim()||"Tavolina "+current;db[current].notes=$("notes").value.trim();db[current].cardNote=$("cardNote").value.trim();db[current].persons=people(current);db[current].updated=stamp();save()}
+function setPayment(p){db[current].payment=p;db[current].updated=stamp();save();drawPayment()}
+function drawPayment(){$("cashBtn").classList.toggle("selected",db[current].payment==="Cash");$("cardBtn").classList.toggle("selected",db[current].payment==="Card");$("cardNoteBox").classList.toggle("hidden",db[current].payment!=="Card")}
+function drawCurrent(){
+ $("autoPeople").textContent=`👥 ${people(current)} persona`;drawPayment();
+ $("statusButtons").innerHTML="";STAGES.forEach((s,n)=>{const b=document.createElement("button");b.className="status-btn "+(db[current].stage===n?"selected":"");b.textContent=s;b.onclick=()=>{db[current].stage=n;db[current].updated=stamp();save();drawCurrent()};$("statusButtons").appendChild(b)});
+ $("requestButtons").innerHTML="";REQUESTS.forEach(r=>{const b=document.createElement("button");b.className="request-btn "+(db[current].requests[r]?"selected":"");b.textContent=r;b.onclick=()=>{db[current].requests[r]=!db[current].requests[r];db[current].updated=stamp();save();drawCurrent()};$("requestButtons").appendChild(b)});
+ $("menus").innerHTML="";ITEMS.filter(i=>i.type==="menu").forEach(i=>{const r=document.createElement("div");r.className="row";r.innerHTML=`<div><div class="name">${i.n}</div><div class="price">${money(i.p)}</div></div><div class="counter"><button class="minus" onclick="change('${i.k}',-1)">−</button><b>${db[current].q[i.k]}</b><button class="plus" onclick="change('${i.k}',1)">+</button></div>`;$("menus").appendChild(r)});
+ $("drinks").innerHTML="";ITEMS.filter(i=>i.type==="drink").forEach(i=>{const q=db[current].q[i.k]||0,s=Math.min(db[current].served[i.k]||0,q),p=Math.max(0,q-s);const r=document.createElement("div");r.className="drink";r.innerHTML=`<div class="drinktop"><div><div class="name">${i.n}</div><div class="price">${money(i.p)}</div></div><div class="counter"><button class="minus" onclick="change('${i.k}',-1)">−</button><b>${q}</b><button class="plus" onclick="change('${i.k}',1)">+</button></div></div><div class="delivery"><div>Porositur<b>${q}</b></div><div>Çuar<b>${s}</b></div><div class="pending">Për t'u çuar<b>${p}</b></div></div><button class="delivered" ${p===0?"disabled":""} onclick="markDelivered('${i.k}')">✓ U ÇUAN ${p||""}</button>`;$("drinks").appendChild(r)});
+ $("tableTotal").textContent="Totali: "+money(total(current));$("updated").textContent=db[current].updated?"Përditësuar: "+db[current].updated:"Ende pa artikuj"
+}
+function change(k,d){db[current].q[k]=Math.max(0,(db[current].q[k]||0)+d);if((db[current].served[k]||0)>db[current].q[k])db[current].served[k]=db[current].q[k];db[current].persons=people(current);db[current].updated=stamp();save();drawCurrent()}
+function markDelivered(k){db[current].served[k]=db[current].q[k]||0;db[current].updated=stamp();save();drawCurrent()}
+function nextStage(){if(db[current].stage<STAGES.length-1){db[current].stage++;db[current].updated=stamp();save();drawCurrent()}}
+function linesForTable(t){return ITEMS.filter(i=>(db[t].q[i.k]||0)>0).map(i=>({key:i.k,name:i.n,qty:db[t].q[i.k],price:i.p,subtotal:db[t].q[i.k]*i.p}))}
+function shareText(txt){location.href="https://wa.me/?text="+encodeURIComponent(txt)}
+function invoiceText(t){let x=`Taste Home\nData: ${isoDate()}\n${db[t].name||"Tavolina "+t}\nPersona: ${people(t)}\nPagesa: ${db[t].payment||"Cash"}\n`;if(db[t].payment==="Card"&&db[t].cardNote)x+=`Shënim Card: ${db[t].cardNote}\n`;if(db[t].notes)x+=`Shënime: ${db[t].notes}\n`;linesForTable(t).forEach(a=>x+=`${a.name}: ${a.qty} × ${money(a.price)} = ${money(a.subtotal)}\n`);return x+`----------------\nTOTALI: ${money(total(t))}`}
+function sendKitchenUpdate(){const t=db[current],changes=[];ITEMS.forEach(i=>{const d=(t.q[i.k]||0)-(t.sent[i.k]||0);if(d>0)changes.push(`+${d} ${i.n}`)});const req=Object.keys(t.requests||{}).filter(k=>t.requests[k]);let x=`👨‍🍳 TASTE HOME — UPDATE\n🪑 ${t.name} (👥 ${people(current)})\n➡️ ${STAGES[t.stage]}\n`;const pend=ITEMS.filter(i=>i.type==="drink"&&pending(current,i.k)>0).map(i=>`${i.n}: ${pending(current,i.k)} për t'u çuar`);if(changes.length)x+=`\nShtesa:\n${changes.join("\n")}\n`;if(pend.length)x+=`\nPije në pritje:\n${pend.join("\n")}\n`;if(req.length)x+=`\nPër stafin:\n${req.join("\n")}\n`;if(t.notes)x+=`\nShënime: ${t.notes}\n`;ITEMS.forEach(i=>t.sent[i.k]=t.q[i.k]||0);t.requests={};t.updated=stamp();save();drawCurrent();shareText(x)}
+function shareCurrent(){if(total(current)<=0)return alert("Tavolina është bosh.");shareText(invoiceText(current))}
+function printCurrent(){if(total(current)<=0)return alert("Tavolina është bosh.");$("printArea").innerHTML=`<div style="font-family:Arial;max-width:420px;margin:auto"><h2>Taste Home</h2><div>${invoiceText(current).replace(/\n/g,"<br>")}</div></div>`;window.print()}
+function closeCurrent(){if(total(current)<=0)return alert("Tavolina është bosh.");history.unshift({id:Date.now(),table:current,name:db[current].name,persons:people(current),notes:db[current].notes,payment:db[current].payment||"Cash",cardNote:db[current].cardNote||"",date:isoDate(),closedAt:stamp(),stage:db[current].stage,lines:linesForTable(current),total:total(current)});db[current]=blank(current);save();alert("Tavolina u ruajt në histori.");showTables()}
+function clearCurrent(){if(confirm("Ta fshij pa e ruajtur si faturë?")){db[current]=blank(current);save();showTables()}}
+function drawKitchen(){$("kitchenList").innerHTML="";let n=0;for(let t=1;t<=TABLES;t++){if(!(total(t)>0||hasRequests(t)||hasPending(t)))continue;n++;const c=document.createElement("div");c.className="card kitchen-card "+(hasPending(t)||hasRequests(t)?"waiting":"");const pend=ITEMS.filter(i=>i.type==="drink"&&pending(t,i.k)>0);c.innerHTML=`<div class="kitchen-title"><h3>${db[t].name}</h3><span class="badge">👥 ${people(t)}</span></div><div><b>${STAGES[db[t].stage]}</b></div>${pend.length?`<div style="margin-top:10px"><b>⚠️ Për t'u çuar:</b><br>${pend.map(i=>`<span class="badge">${i.n}: ${pending(t,i.k)}</span>`).join("")}</div>`:""}${db[t].notes?`<div class="meta">Shënime: ${db[t].notes}</div>`:""}`;$("kitchenList").appendChild(c)}if(!n)$("kitchenList").innerHTML='<div class="card empty">Nuk ka tavolina aktive.</div>'}
+function filtered(){return history.filter(x=>x.date===$("historyDate").value)}
+function drawHistory(){const day=filtered(),grand=day.reduce((s,x)=>s+x.total,0),cash=day.filter(x=>x.payment==="Cash").reduce((s,x)=>s+x.total,0),card=day.filter(x=>x.payment==="Card").reduce((s,x)=>s+x.total,0),old=day.filter(x=>!x.payment).reduce((s,x)=>s+x.total,0);$("dailyTotal").innerHTML=`Xhiro: ${money(grand)} · ${day.length} fatura<br><span style="font-size:16px">Cash: ${money(cash)} · Card: ${money(card)}${old?` · Pa specifikuar: ${money(old)}`:""}</span>`;$("historyBox").innerHTML=day.length?"":'<div class="empty">Nuk ka fatura për këtë datë.</div>';day.forEach(inv=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<h3>${inv.name||"Tavolina "+inv.table} — ${money(inv.total)}</h3><div class="meta">${inv.date} · ${inv.closedAt}</div><div><span class="badge">👥 ${inv.persons||0}</span><span class="badge">${inv.payment||"Pa specifikuar"}</span>${inv.cardNote?`<span class="badge">${inv.cardNote}</span>`:""}</div>${(inv.lines||[]).map(x=>`<div class="invoice-line"><span>${x.name} × ${x.qty}</span><b>${money(x.subtotal)}</b></div>`).join("")}<div class="actions"><button class="share" onclick="shareInvoice(${inv.id})">WhatsApp</button><button class="delete" onclick="deleteInvoice(${inv.id})">Fshij</button></div>`;$("historyBox").appendChild(c)})}
+function shareInvoice(id){const inv=history.find(x=>x.id===id);if(!inv)return;let x=`Taste Home\nData: ${inv.date}\n${inv.name}\nPersona: ${inv.persons||0}\nPagesa: ${inv.payment||"Pa specifikuar"}\n`;if(inv.cardNote)x+=`Shënim Card: ${inv.cardNote}\n`;if(inv.notes)x+=`Shënime: ${inv.notes}\n`;inv.lines.forEach(a=>x+=`${a.name}: ${a.qty} × ${money(a.price)} = ${money(a.subtotal)}\n`);x+=`----------------\nTOTALI: ${money(inv.total)}`;shareText(x)}
+function deleteInvoice(id){if(confirm("Ta fshij këtë faturë?")){history=history.filter(x=>x.id!==id);save();drawHistory()}}
+function clearHistoryForDate(){const d=$("historyDate").value;if(confirm("T'i fshij të gjitha faturat e datës "+d+"?")){history=history.filter(x=>x.date!==d);save();drawHistory()}}
+function shareDaily(){const day=filtered(),grand=day.reduce((s,x)=>s+x.total,0),cash=day.filter(x=>x.payment==="Cash").reduce((s,x)=>s+x.total,0),card=day.filter(x=>x.payment==="Card").reduce((s,x)=>s+x.total,0);let x=`Taste Home — Xhiro ${$("historyDate").value}\nFatura: ${day.length}\nCash: ${money(cash)}\nCard: ${money(card)}\n\n`;ITEMS.forEach(i=>{const q=qtyHistory(day,i);if(q)x+=`${i.n}: ${q}\n`});x+=`Persona: ${day.reduce((s,a)=>s+(Number(a.persons)||inferPeople(a)),0)}\n----------------\nTOTALI: ${money(grand)}`;shareText(x)}
+function qtyHistory(arr,i){return arr.reduce((s,inv)=>s+(inv.lines||[]).filter(x=>x.name===i.n||(i.k==="normal"&&x.name==="Menu")).reduce((a,x)=>a+(Number(x.qty)||0),0),0)}
+function inferPeople(inv){return (inv.lines||[]).filter(x=>["Menu","Menu Normale","Menu Vegjet","Menu Kids"].includes(x.name)).reduce((s,x)=>s+(Number(x.qty)||0),0)}
+function fillYears(){const ys=[...new Set(history.map(x=>(x.date||"").slice(0,4)).filter(Boolean))].sort().reverse();const now=String(new Date().getFullYear());if(!ys.includes(now))ys.unshift(now);$("statsYear").innerHTML=ys.map(y=>`<option>${y}</option>`).join("");if(!$("statsYear").value)$("statsYear").value=now}
+function chart(el,vals,kind){const max=Math.max(...vals,1),months=["J","S","M","P","M","Q","K","G","S","T","N","D"];$ (el).innerHTML=vals.map((v,i)=>`<div class="barwrap"><div class="barval">${kind==="money"?"€"+Math.round(v):v}</div><div class="bar" style="height:${Math.max(2,(v/max)*150)}px"></div><div>${months[i]}</div></div>`).join("")}
+function drawStats(){const y=$("statsYear").value,arr=history.filter(x=>(x.date||"").startsWith(y));const persons=arr.reduce((s,x)=>s+(Number(x.persons)||inferPeople(x)),0),revenue=arr.reduce((s,x)=>s+(Number(x.total)||0),0),cash=arr.filter(x=>x.payment==="Cash").reduce((s,x)=>s+x.total,0),card=arr.filter(x=>x.payment==="Card").reduce((s,x)=>s+x.total,0);let cards=[["👥 Persona",persons],["Menu Normale",qtyHistory(arr,ITEMS[0])],["🥬 Vegjet",qtyHistory(arr,ITEMS[1])],["🧒 Kids",qtyHistory(arr,ITEMS[2])],["🍺 Birrë",qtyHistory(arr,ITEMS[3])],["🍷 Verë e kuqe",qtyHistory(arr,ITEMS[4])],["🥂 Verë e bardhë",qtyHistory(arr,ITEMS[5])],["🍇 Grape Juice",qtyHistory(arr,ITEMS[6])],["💰 Xhiro",money(revenue)],["💵 Cash",money(cash)],["💳 Card",money(card)],["Mes./person",persons?money(revenue/persons):money(0)]];$("statsCards").innerHTML=cards.map(a=>`<div class="stat"><span>${a[0]}</span><b>${a[1]}</b></div>`).join("");const pv=Array(12).fill(0),rv=Array(12).fill(0);arr.forEach(x=>{const m=Number((x.date||"").slice(5,7))-1;if(m>=0&&m<12){pv[m]+=Number(x.persons)||inferPeople(x);rv[m]+=Number(x.total)||0}});chart("peopleChart",pv,"num");chart("revenueChart",rv,"money")}
+save();drawTables();
+</script>
 </body>
 </html>
