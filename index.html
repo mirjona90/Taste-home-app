@@ -3,143 +3,343 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#8f3028">
+<meta name="theme-color" content="#7b2d26">
 <title>Taste Home Pro</title>
 <style>
-:root{--brand:#8f3028;--green:#198557;--orange:#e29217;--red:#c62828;--bg:#f7f0e7;--card:#fff;--muted:#7a716a;--line:#eadfd5}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:#201c19}
-header{position:sticky;top:0;z-index:20;background:var(--brand);color:#fff;padding:14px 18px 12px;box-shadow:0 2px 8px #0002}
-.head{max-width:820px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.title{font-size:25px;font-weight:900;line-height:1.05}.subtitle{opacity:.85;margin-top:4px}.datebox{display:flex;align-items:center;gap:5px;background:#ffffff12;border:1px solid #ffffff22;border-radius:16px;padding:5px}.datebox input{width:150px;background:transparent;color:#fff;border:0}.datebox input::-webkit-calendar-picker-indicator{filter:invert(1)}.datebtn{background:#ffffff15;color:#fff;padding:10px 12px}
-nav{position:sticky;top:81px;z-index:19;background:var(--bg);display:flex;gap:7px;padding:8px 12px;border-bottom:1px solid var(--line)}
-button,input,textarea,select{font:inherit}button{border:0;border-radius:13px;padding:12px;font-weight:800;cursor:pointer}.navbtn{flex:1;background:#eee5dc}.navbtn.active{background:#fff;box-shadow:0 2px 8px #0001;color:var(--brand)}
-main{max-width:820px;margin:auto;padding:12px 14px 32px}.hidden{display:none!important}.card{background:#fff;border-radius:22px;padding:16px;margin:12px 0;box-shadow:0 4px 15px #0000000c}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.table{position:relative;text-align:left;background:#fff;border:2px solid transparent;border-radius:18px;padding:15px;min-height:116px;box-shadow:0 3px 12px #0001}.table.active{border-color:#87c9ad}.table.alert{border-color:var(--red);background:#fff8f7}.table h3{margin:0 0 5px;font-size:17px}.amount{font-size:22px;color:var(--green);font-weight:900}.sub,.meta{font-size:13px;color:var(--muted)}.redtxt{color:var(--red);font-weight:900}
-.topline{display:flex;align-items:center;justify-content:space-between;gap:8px}.back{background:#eee5dc}.total{font-size:23px;font-weight:900;color:var(--green)}
-label{display:block;color:var(--muted);font-size:13px;margin:8px 0 4px}input,textarea,select{width:100%;border:1px solid #d9cec4;border-radius:12px;padding:10px;background:#fff}.compact-fields{display:grid;grid-template-columns:1.4fr .6fr;gap:8px}.notes{min-height:52px;height:52px;resize:vertical}
-.people{text-align:center;font-size:20px;font-weight:900;color:var(--brand);margin-top:8px}
-.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #eee}.row:last-child{border-bottom:0}.name{font-weight:900}.price{font-size:13px;color:var(--muted)}.counter{display:flex;align-items:center;gap:10px}.counter b{min-width:26px;text-align:center;font-size:20px}.minus,.plus{width:46px;height:46px;padding:0;font-size:25px}.minus{background:#eee}.plus{background:var(--brand);color:#fff}
-.status-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.status-btn{background:#eee;padding:12px 5px;font-size:12px;min-height:66px}.status-btn.selected{background:var(--brand);color:#fff}.next{width:100%;background:var(--orange);color:#fff;margin-top:10px;font-size:18px}
-.request-grid,.paybuttons,.actions,.toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px}.request-btn,.paybtn{background:#eee}.request-btn.selected{background:var(--orange);color:#fff}.paybtn.selected{background:var(--green);color:#fff}
-.drinktiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}.drinktile{position:relative;background:#fff;border:1px solid #ded4ca;border-radius:18px;padding:15px 8px;text-align:center;min-height:130px}.drinktile .ico{font-size:37px}.drinktile .dn{font-size:18px;font-weight:900}.drinktile .dp{color:var(--muted);font-weight:700}.badgealert{position:absolute;right:8px;top:8px;background:var(--red);color:#fff;border-radius:999px;min-width:27px;height:27px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;box-shadow:0 2px 5px #0003}
-.drinkdetail{border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:10px}.drinkhead{display:flex;justify-content:space-between;align-items:center}.delivery{display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;margin:12px 0}.delivery b{display:block;font-size:22px}.deliverBtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.delivered{background:#e8e8e8}.delivered:not(:disabled){background:var(--orange);color:#fff}.delivered:disabled{color:#aaa}
-.share{background:#25D366}.print{background:#34495e;color:#fff}.close{background:var(--green);color:#fff}.delete{background:#f4d7d4;color:var(--red)}.kitchen{background:var(--orange);color:#fff}.invoice{background:#e8ded4}
-.livebox{background:#fff;border-radius:18px;padding:14px;margin:10px 0}.livegrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center}.livegrid b{display:block;font-size:21px;color:var(--green)}
-.kitchen-card{border-left:6px solid var(--green)}.kitchen-card.waiting{border-left-color:var(--red)}.badge{display:inline-block;background:#eee;border-radius:999px;padding:4px 8px;font-size:12px;margin:3px}
-.invoice-line{display:flex;justify-content:space-between;gap:10px;margin:6px 0}.empty{text-align:center;color:var(--muted);padding:26px}
-.statsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:#fff;border-radius:15px;padding:12px;box-shadow:0 2px 9px #0001}.stat b{display:block;font-size:21px;color:var(--green)}
-.chart{display:flex;align-items:flex-end;gap:4px;height:210px;padding-top:12px;overflow-x:auto}.barwrap{min-width:25px;flex:1;text-align:center;font-size:9px}.bar{background:var(--brand);min-height:2px;border-radius:5px 5px 0 0}.barval{font-size:8px;white-space:nowrap;margin-bottom:4px}
-.addtable{width:100%;background:#eee5dc;color:var(--brand);margin-top:10px}.tipbox{display:grid;grid-template-columns:1fr 1fr;gap:8px}.paidcheck{display:flex;gap:10px;align-items:center;margin-top:10px;font-weight:800}.paidcheck input{width:22px;height:22px}
-#printArea{display:none}@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:420px){.title{font-size:21px}.datebox input{width:122px}.status-btn{font-size:11px}.compact-fields{grid-template-columns:1fr 100px}}
+:root{
+  --brand:#7b2d26;--green:#1f7a53;--orange:#d98a1d;--red:#b3261e;
+  --bg:#f6f0e9;--card:#fff;--text:#211d1a;--muted:#7b7168;--line:#e8ded4;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input,textarea,select{font:inherit}
+button{border:0;cursor:pointer}
+header{position:sticky;top:0;z-index:50;background:var(--brand);color:#fff;padding:11px 12px;box-shadow:0 2px 10px #0003}
+.headrow{max-width:860px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+header h1{margin:0;font-size:20px} header small{opacity:.85}
+.datebar{display:flex;align-items:center;gap:4px;background:#ffffff18;border:1px solid #ffffff2c;border-radius:12px;padding:3px}
+.datebar input{width:122px;background:transparent;color:#fff;border:0;padding:6px 2px;font-size:12px}
+.datebar input::-webkit-calendar-picker-indicator{filter:invert(1)}
+.datebar button{background:#ffffff18;color:#fff;border-radius:8px;padding:7px 8px;font-weight:900}
+nav{position:sticky;top:59px;z-index:45;background:var(--bg);display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:7px 9px;border-bottom:1px solid var(--line)}
+.navbtn{padding:9px 4px;border-radius:11px;background:#e9dfd6;font-size:12px;font-weight:850}
+.navbtn.active{background:var(--brand);color:#fff}
+main{max-width:860px;margin:auto;padding:8px 10px 28px}
+.hidden{display:none!important}.card{background:#fff;border-radius:16px;padding:12px;margin:9px 0;box-shadow:0 2px 9px #00000010}
+.meta{font-size:12px;color:var(--muted)}.section-title{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}.section-title h3{margin:0;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.table{position:relative;background:#fff;border:2px solid transparent;border-radius:15px;padding:12px 10px;text-align:left;min-height:112px;box-shadow:0 2px 8px #0000000f}
+.table.active{border-color:#78b99c}.table.alert{border-color:var(--red);background:#fff7f6}.table.unpaid{box-shadow:inset 0 0 0 2px #e9b0ac}
+.position{font-size:11px;font-weight:900;color:var(--muted);text-transform:uppercase}.guest{font-size:16px;font-weight:950;margin:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.amount{font-size:19px;font-weight:950;color:var(--green);margin-top:3px}.redtxt{color:var(--red);font-weight:900;font-size:11px;margin-top:3px}
+.live{padding:12px}.livetop{display:flex;justify-content:space-between;align-items:end}.livetotal{font-size:26px;font-weight:950;color:var(--green)}.livechips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}.livechip{background:#f1e8df;border-radius:10px;padding:8px 4px;text-align:center;font-size:11px;font-weight:800}.livechip b{display:block;font-size:15px;margin-top:2px}.clickchip{background:#edf3f8;color:#274d72}
+.backbar{position:sticky;top:101px;z-index:40;background:var(--bg);display:grid;grid-template-columns:auto 1fr auto;gap:7px;align-items:center;padding:3px 0 6px}.back{background:#e9dfd6;border-radius:9px;padding:9px 11px;font-weight:900}.tabletitle{font-size:15px;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topTotal{font-size:17px;font-weight:950;color:var(--green)}
+label{display:block;font-size:12px;color:var(--muted);margin:6px 0 3px}
+input,textarea,select{width:100%;border:1px solid #d9cfc6;border-radius:9px;padding:9px;background:#fff}
+.compact2{display:grid;grid-template-columns:1fr 92px;gap:7px}.notes{height:46px;min-height:46px;resize:vertical}.people{font-size:18px;font-weight:900;color:var(--brand);text-align:center;margin-top:5px}
+.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #eee}.row:last-child{border-bottom:0}.name{font-weight:900}.price{font-size:12px;color:var(--muted)}.counter{display:flex;align-items:center;gap:7px}.counter b{min-width:26px;text-align:center;font-size:19px}.minus,.plus{width:40px;height:40px;border-radius:10px;padding:0;font-size:22px;font-weight:900}.minus{background:#eee}.plus{background:var(--brand);color:#fff}
+.status-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.status-btn{min-height:52px;border-radius:9px;background:#eee;padding:6px 3px;font-size:10px;font-weight:850}.status-btn.selected{background:var(--brand);color:#fff}.next{width:100%;margin-top:7px;background:var(--orange);color:#fff;border-radius:10px;padding:10px;font-weight:900}
+.reqgrid,.paybuttons,.actions,.toolbar{display:grid;grid-template-columns:1fr 1fr;gap:7px}.reqbtn,.paybtn{background:#eee;border-radius:10px;padding:10px;font-weight:900}.reqbtn.selected{background:var(--orange);color:#fff}.paybtn.selected{background:var(--green);color:#fff}
+.drinktiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.drinktile{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;min-height:100px;padding:10px 7px;text-align:center}.drinktile .ico{font-size:30px}.drinktile .dn{font-size:15px;font-weight:950}.drinktile .dp{font-size:11px;color:var(--muted)}.badgealert{position:absolute;top:6px;right:6px;min-width:24px;height:24px;padding:0 6px;background:var(--red);color:#fff;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:950}
+.drinkdetail{border:1px solid var(--line);border-radius:13px;padding:10px;margin-top:8px}.drinkhead{display:flex;justify-content:space-between;align-items:center}.delivery{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin:7px 0;font-size:11px;color:var(--muted)}.delivery b{display:block;font-size:18px;color:var(--text)}.delivery .pending b{color:var(--red)}.deliverBtns{display:grid;grid-template-columns:1fr 1fr;gap:6px}.deliverBtns button{border-radius:9px;padding:9px;font-weight:900}.deliverBtns button:not(:disabled){background:var(--orange);color:#fff}.deliverBtns button:disabled{background:#ddd;color:#999}
+.paidcheck{display:flex;align-items:center;gap:9px;font-weight:850;color:var(--text);margin-top:9px}.paidcheck input{width:20px;height:20px}.tipgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.tipbox{margin-top:7px;padding:9px;border-radius:10px;background:#f4eee8;font-weight:850}.tipbox.good{background:#edf8f2;color:#145b3c}.tipbox.bad{background:#fff0ef;color:#8d201a}
+.kitchen{background:var(--orange);color:#fff}.print{background:#34495e;color:#fff}.invoice{background:#e8ded4}.delete{background:#f4d7d4;color:var(--red)}.close{background:var(--green);color:#fff}
+.service-card{border-left:6px solid var(--green)}.service-card.waiting{border-left-color:var(--red)}.badge{display:inline-block;background:#eee;border-radius:999px;padding:4px 7px;font-size:11px;margin:3px 3px 2px 0}.warnbadge{background:#fff0df;color:#9a4d00}.invoice-line{display:flex;justify-content:space-between;gap:8px;margin:5px 0}.empty{text-align:center;color:var(--muted);padding:24px}
+.statsgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.stat{background:#fff;border-radius:13px;padding:10px;box-shadow:0 2px 8px #0000000f}.stat b{display:block;font-size:19px;color:var(--green)}.stats-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.stats-modes button{background:#eee;border-radius:9px;padding:9px;font-weight:850}.stats-modes button.selected{background:var(--brand);color:#fff}
+.chart{display:flex;align-items:flex-end;gap:4px;height:200px;overflow-x:auto;padding-top:12px}.barwrap{min-width:24px;flex:1;text-align:center;font-size:9px}.bar{background:var(--brand);min-height:2px;border-radius:4px 4px 0 0}.tipbar{background:var(--orange)}.barval{font-size:8px;margin-bottom:3px}
+.addtable{width:100%;background:#e9dfd6;color:var(--brand);border-radius:11px;padding:10px;font-weight:900;margin-top:8px}
+.modal{position:fixed;inset:0;z-index:100;background:#0008;display:flex;align-items:flex-end;justify-content:center;padding:10px}.modalbox{width:min(680px,100%);max-height:84vh;overflow:auto;background:var(--bg);border-radius:18px 18px 10px 10px;padding:11px}.modalhead{display:flex;align-items:center;justify-content:space-between}.modalhead h3{margin:0}.modalclose{background:#e9dfd6;border-radius:9px;padding:8px 10px;font-weight:900}.payrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;background:#fff;border-radius:11px;padding:9px;margin:6px 0}.payrow .who{font-weight:900}.payrow button{background:var(--green);color:#fff;border-radius:8px;padding:8px 9px;font-weight:850}
+#printArea{display:none}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}.drinktiles{grid-template-columns:repeat(4,1fr)}}
 @media print{body *{visibility:hidden!important}#printArea,#printArea *{visibility:visible!important}#printArea{display:block!important;position:absolute;left:0;top:0;width:100%;padding:20px;background:#fff}}
 </style>
 </head>
 <body>
-<header><div class="head"><div><div class="title">Taste Home<br>Pro</div><div class="subtitle">Shërbimi i mbrëmjes</div></div><div class="datebox"><button class="datebtn" onclick="moveDate(-1)">‹</button><input id="workDate" type="date" onchange="saveWorkDate()"><button class="datebtn" onclick="today()">Sot</button><button class="datebtn" onclick="moveDate(1)">›</button></div></div></header>
-<nav><button id="tabTables" class="navbtn active" onclick="showTables()">🪑 Tavolinat</button><button id="tabKitchen" class="navbtn" onclick="showKitchen()">🍽️ Shërbimi</button><button id="tabHistory" class="navbtn" onclick="showHistory()">🧾 Historia</button><button id="tabStats" class="navbtn" onclick="showStats()">📊 Statistika</button></nav>
+<header><div class="headrow"><div><h1>Taste Home Pro</h1><small>Shërbimi i mbrëmjes</small></div><div class="datebar"><button onclick="shiftWorkDate(-1)">‹</button><input id="workDate" type="date" onchange="saveWorkDate()"><button onclick="setToday()">Sot</button><button onclick="shiftWorkDate(1)">›</button></div></div></header>
+<nav>
+<button id="tabTables" class="navbtn active" onclick="showTables()">🪑 Tavolinat</button>
+<button id="tabService" class="navbtn" onclick="showService()">🍽️ Shërbimi</button>
+<button id="tabHistory" class="navbtn" onclick="showHistory()">🧾 Historia</button>
+<button id="tabStats" class="navbtn" onclick="showStats()">📊 Statistika</button>
+</nav>
 <main>
 <section id="tablesView">
-<div id="liveRevenue" class="livebox"></div><div id="tables" class="grid"></div>
-<button id="addTableBtn" class="addtable" onclick="addExtraTable()">＋ Shto tavolinë tjetër</button>
+  <div class="card live">
+    <div class="livetop"><div><div class="meta">💰 XHIRO SOT</div><div id="liveSales" class="livetotal">€0.00</div></div><div style="text-align:right"><div class="meta">🎁 Bakshishe</div><b id="liveTips">€0.00</b></div></div>
+    <div class="livechips">
+      <button class="livechip" onclick="openCashList()">💵 Cash<b id="liveCash">€0.00</b></button>
+      <button class="livechip clickchip" onclick="openCardList()">💳 Card<b id="liveCard">€0.00</b></button>
+      <div class="livechip">⏳ Pa paguar<b id="liveUnpaid">€0.00</b></div>
+    </div>
+  </div>
+  <div id="tables" class="grid"></div>
+  <button id="addTableBtn" class="addtable" onclick="addExtraTable()">＋ Shto tavolinë</button>
+  <div id="extraInfo" class="meta" style="text-align:center;margin-top:5px"></div>
 </section>
+
 <section id="tableView" class="hidden">
-<div class="topline"><button class="back" onclick="showTables()">←</button><h3 id="tableHeader" style="margin:0"></h3><div id="topTotal" class="total"></div></div>
-<div class="card">
-<div class="compact-fields"><div><label>Emri i rezervimit / klientit</label><input id="tableName" placeholder="p.sh. Ella Wise" oninput="updateDetails()"></div><div><label>Persona rezervim</label><input id="reservedPeople" type="number" min="0" placeholder="3" oninput="updateDetails()"></div></div>
-<div id="autoPeople" class="people">👥 0 persona</div>
-<label>Shënime</label><textarea id="notes" class="notes" placeholder="p.sh. pa alkool..." oninput="updateDetails()"></textarea>
-</div>
-<div class="card"><div class="topline"><h3>👥 Menu</h3><span class="meta">Personat korrigjohen vetë</span></div><div id="menus"></div></div>
-<div class="card"><h3>🍽️ Ku jemi me shërbimin?</h3><div id="statusButtons" class="status-grid"></div><button class="next" onclick="nextStage()">HAPI TJETËR →</button></div>
-<div class="card"><h3>⚡ Kërkesa të shpejta</h3><div id="requestButtons" class="request-grid"></div></div>
-<div class="card"><div class="topline"><h3>🥂 Pijet</h3><span class="meta">Kliko katrorin për +1</span></div><div id="drinkTiles" class="drinktiles"></div><div id="drinkDetails"></div></div>
-<div class="card"><div class="topline"><h3>💳 Pagesa</h3><div id="tableTotal" class="total"></div></div><div class="paybuttons"><button id="cashBtn" class="paybtn" onclick="setPayment('Cash')">💵 CASH</button><button id="cardBtn" class="paybtn" onclick="setPayment('Card')">💳 CARD</button></div><div id="cardBox" class="hidden"><label class="paidcheck"><input id="cardPaid" type="checkbox" onchange="setCardPaid()"> Karta është paguar</label><label>Shënim Card</label><input id="cardNote" placeholder="p.sh. Visa / 2 pagesa" oninput="updateDetails()"></div><div class="tipbox"><div><label>Shuma e marrë €</label><input id="received" type="number" step=".01" min="0" placeholder="0" oninput="updateReceived()"></div><div><label>Bakshishi</label><div id="tip" class="total" style="padding-top:7px">€0.00</div></div></div></div>
-<div class="card"><div class="actions"><button class="kitchen" onclick="sendKitchenUpdate()">👨‍🍳 Update Kuzhina</button><button class="print" onclick="printCurrent()">🖨️ Printo</button><button class="invoice" onclick="shareCurrent()">🧾 Dërgo faturën</button><button class="delete" onclick="clearCurrent()">🗑️ Fshije</button><button class="close" style="grid-column:1/-1" onclick="closeCurrent()">✅ Mbyll tavolinën</button></div></div>
+  <div class="backbar"><button class="back" onclick="showTables()">←</button><div id="tableHeader" class="tabletitle"></div><div id="topTotal" class="topTotal"></div></div>
+  <div class="card">
+    <div class="compact2">
+      <div><label>Emri i rezervimit / klientit</label><input id="tableName" placeholder="p.sh. Ella Wise" oninput="updateDetails()"></div>
+      <div><label>Persona</label><input id="reservedPeople" type="number" min="0" inputmode="numeric" placeholder="2" oninput="updateDetails()"></div>
+    </div>
+    <div id="autoPeople" class="people">👥 0 persona</div>
+    <label>Shënime</label><textarea id="notes" class="notes" placeholder="p.sh. pa alkool..." oninput="updateDetails()"></textarea>
+  </div>
+
+  <div class="card"><div class="section-title"><h3>👥 Menu</h3><span class="meta">Personat llogariten vetë</span></div><div id="menus"></div></div>
+  <div class="card"><div class="section-title"><h3>🍽️ Shërbimi</h3><span class="meta">Komandë për kuzhinën</span></div><div id="statusButtons" class="status-grid"></div><button class="next" onclick="nextStage()">HAPI TJETËR →</button></div>
+  <div class="card"><h3>⚡ Kërkesa të shpejta</h3><div id="requestButtons" class="reqgrid"></div></div>
+  <div class="card"><div class="section-title"><h3>🥂 Pijet</h3><span class="meta">Kliko katrorin për +1</span></div><div id="drinkTiles" class="drinktiles"></div><div id="drinkDetails"></div></div>
+
+  <div class="card">
+    <div class="section-title"><h3>💳 Pagesa</h3><b id="tableTotal"></b></div>
+    <div class="paybuttons"><button id="cashBtn" class="paybtn" onclick="setPayment('Cash')">💵 CASH</button><button id="cardBtn" class="paybtn" onclick="setPayment('Card')">💳 CARD</button></div>
+    <div id="cardBox" class="hidden">
+      <label class="paidcheck"><input id="cardPaid" type="checkbox" onchange="setCardPaid(this.checked)"> ✅ Card e paguar</label>
+      <label>Shënim Card</label><input id="cardNote" placeholder="p.sh. Visa / 2 pagesa" oninput="updateDetails()">
+    </div>
+    <div class="tipgrid">
+      <div><label>Shuma e marrë</label><input id="received" type="number" min="0" step=".01" inputmode="decimal" placeholder="0.00" oninput="setReceived(this.value)"></div>
+      <div><label>Bakshishi</label><div id="tipBox" class="tipbox">€0.00</div></div>
+    </div>
+  </div>
+
+  <div class="card"><div class="actions">
+    <button class="kitchen" onclick="sendKitchenUpdate()">👨‍🍳 Update Kuzhina</button>
+    <button class="print" onclick="printCurrent()">🖨️ Printo</button>
+    <button class="invoice" onclick="shareCurrent()">🧾 Dërgo faturën</button>
+    <button class="delete" onclick="clearCurrent()">🗑️ Fshije</button>
+    <button class="close" style="grid-column:1/-1" onclick="closeCurrent()">✅ Mbyll tavolinën</button>
+  </div></div>
 </section>
-<section id="kitchenView" class="hidden"><div id="kitchenList"></div></section>
-<section id="historyView" class="hidden"><div class="card"><label>Data</label><input id="historyDate" type="date" onchange="drawHistory()"></div><div class="toolbar"><button class="share" onclick="shareDaily()">Share xhiron</button><button class="delete" onclick="clearHistoryForDate()">Fshij datën</button></div><div id="dailyTotal" class="card total"></div><div id="historyBox"></div></section>
-<section id="statsView" class="hidden"><div class="card"><div class="status-grid" style="grid-template-columns:repeat(3,1fr)"><button id="statsAnnualBtn" class="status-btn selected" onclick="setStatsMode('year')">Vjetore</button><button id="statsMonthlyBtn" class="status-btn" onclick="setStatsMode('month')">Mujore</button><button id="statsWeeklyBtn" class="status-btn" onclick="setStatsMode('week')">Javore</button></div><div id="statsYearBox"><label>Viti</label><select id="statsYear" onchange="drawStats()"></select></div><div id="statsMonthBox" class="hidden"><label>Muaji</label><input id="statsMonth" type="month" onchange="drawStats()"></div><div id="statsWeekBox" class="hidden"><label>Java</label><input id="statsWeek" type="week" onchange="drawStats()"></div><div id="statsPeriodLabel" class="meta" style="margin-top:10px"></div></div><div id="statsCards" class="statsgrid"></div><div class="card"><h3>Persona</h3><div id="peopleChart" class="chart"></div></div><div class="card"><h3>Xhiro</h3><div id="revenueChart" class="chart"></div></div><div class="card"><h3>Bakshishe</h3><div id="tipsChart" class="chart"></div></div></section>
+
+<section id="serviceView" class="hidden"><div id="serviceList"></div></section>
+
+<section id="historyView" class="hidden">
+  <div class="card"><label>Data</label><div style="display:grid;grid-template-columns:auto 1fr auto;gap:5px"><button class="back" onclick="shiftHistoryDate(-1)">‹</button><input id="historyDate" type="date" onchange="drawHistory()"><button class="back" onclick="shiftHistoryDate(1)">›</button></div></div>
+  <div id="dailyTotal" class="card"></div>
+  <div class="toolbar"><button class="kitchen" onclick="shareDaily()">Share xhiron</button><button class="delete" onclick="clearHistoryForDate()">Fshij datën</button></div>
+  <div id="historyBox"></div>
+</section>
+
+<section id="statsView" class="hidden">
+  <div class="card">
+    <div class="stats-modes"><button id="statsYearBtn" class="selected" onclick="setStatsMode('year')">Vjetore</button><button id="statsMonthBtn" onclick="setStatsMode('month')">Mujore</button><button id="statsWeekBtn" onclick="setStatsMode('week')">Javore</button></div>
+    <div id="statsYearBox"><label>Viti</label><select id="statsYear" onchange="drawStats()"></select></div>
+    <div id="statsMonthBox" class="hidden"><label>Muaji</label><input id="statsMonth" type="month" onchange="drawStats()"></div>
+    <div id="statsWeekBox" class="hidden"><label>Java</label><input id="statsWeek" type="week" onchange="drawStats()"></div>
+    <div id="statsPeriodLabel" class="meta" style="margin-top:8px"></div>
+  </div>
+  <div id="statsCards" class="statsgrid"></div>
+  <div class="card"><h3>Persona</h3><div id="peopleChart" class="chart"></div></div>
+  <div class="card"><h3>Xhiro</h3><div id="revenueChart" class="chart"></div></div>
+  <div class="card"><h3>Bakshishe</h3><div id="tipsChart" class="chart"></div></div>
+</section>
 <div id="printArea"></div>
 </main>
+
+<div id="cardModal" class="modal hidden" onclick="modalBg(event,'cardModal')"><div class="modalbox"><div class="modalhead"><h3>💳 Card sot</h3><button class="modalclose" onclick="closeModal('cardModal')">Mbyll</button></div><div id="cardModalBody"></div></div></div>
+<div id="cashModal" class="modal hidden" onclick="modalBg(event,'cashModal')"><div class="modalbox"><div class="modalhead"><h3>💵 Cash sot</h3><button class="modalclose" onclick="closeModal('cashModal')">Mbyll</button></div><div id="cashModalBody"></div></div></div>
+
 <script>
 const ITEMS=[
-{k:"normal",n:"Menu Normale",p:25,type:"menu"},{k:"veg",n:"Menu Vegjet",p:25,type:"menu"},{k:"kids",n:"Menu Kids",p:15,type:"menu"},{k:"group",n:"Grup",p:15,type:"menu"},
-{k:"beer",n:"Birrë",p:3.5,type:"drink",ico:"🍺"},{k:"red",n:"Verë e kuqe",p:2.5,type:"drink",ico:"🍷"},{k:"white",n:"Verë e bardhë",p:2.5,type:"drink",ico:"🥂"},{k:"juice",n:"Grape Juice",p:2.5,type:"drink",ico:"🍇"}];
-const STAGES=[{short:"1<br>Aper. 1",msg:"APERITIV 1"},{short:"2<br>Aper. 2",msg:"APERITIV 2"},{short:"3<br>Supë",msg:"SUPA"},{short:"4<br>Main",msg:"MAIN"},{short:"5<br>Ëmb.",msg:"ËMBËLSIRA"}];
+ {k:"normal",n:"Menu Normale",p:25,type:"menu"},
+ {k:"veg",n:"Menu Vegjet",p:25,type:"menu"},
+ {k:"kids",n:"Menu Kids",p:15,type:"menu"},
+ {k:"group",n:"Grup",p:15,type:"menu"},
+ {k:"beer",n:"Birrë",p:3.5,type:"drink",ico:"🍺"},
+ {k:"red",n:"Verë e kuqe",p:2.5,type:"drink",ico:"🍷"},
+ {k:"white",n:"Verë e bardhë",p:2.5,type:"drink",ico:"🥂"},
+ {k:"juice",n:"Grape Juice",p:2.5,type:"drink",ico:"🍇"}
+];
+const STAGES=[
+ {short:"1<br>Aper. 1",msg:"APERITIV 1"},
+ {short:"2<br>Aper. 2",msg:"APERITIV 2"},
+ {short:"3<br>Supë",msg:"SUPA"},
+ {short:"4<br>Main",msg:"MAIN"},
+ {short:"5<br>Ëmb.",msg:"ËMBËLSIRA"}
+];
 const REQUESTS=["💧 Ujë","🍞 Bukë"];
-const POSITIONS=["🍲 Tek Tepsiat","🍇 Tek Hardhia","🚰 Tek Cezma","💡 Tek Drita","🍊 Tek Mandarina","🟠 Tek Portokalli","🌳 Nën Fik","🌿 Në Bahçe","🚪 Tek Dera","➕ Tavolinë Extra"];
+const BASE_POSITIONS=["🥘 Tek Tepsiat","🍇 Tek Hardhia","💧 Tek Çezma","💡 Tek Drita","🍊 Tek Mandarina","🍊 Tek Portokalli","🌳 Nën Fik","🌿 Në Bahçe","🚪 Tek Dera","➕ Tavolinë Extra"];
 const MAX_TABLES=13;
-const DB_KEY="taste_home_tables_v11",HIST_KEY="taste_home_history_v11",DATE_KEY="taste_home_workdate_v11",COUNT_KEY="taste_home_tablecount_v11";
-let db=JSON.parse(localStorage.getItem(DB_KEY)||"{}"),history=JSON.parse(localStorage.getItem(HIST_KEY)||"[]"),tableCount=Number(localStorage.getItem(COUNT_KEY)||10),current=1;
+
+/* Ruajmë historikun e versionit v9. Nëse v9 s'ka të dhëna, lexojmë edhe v11 si fallback. */
+const DB_KEY="taste_home_tables_v9",HIST_KEY="taste_home_history_v9",DATE_KEY="taste_home_workdate_v9",COUNT_KEY="taste_home_tablecount_v9";
+const oldDB9=localStorage.getItem(DB_KEY), oldHist9=localStorage.getItem(HIST_KEY);
+let db=JSON.parse(oldDB9||localStorage.getItem("taste_home_tables_v11")||"{}");
+let history=JSON.parse(oldHist9||localStorage.getItem("taste_home_history_v11")||"[]");
+let tableCount=Math.max(10,Math.min(13,Number(localStorage.getItem(COUNT_KEY)||10))),current=1,statsMode="year";
 const $=id=>document.getElementById(id);
-function blank(t){let q={},sent={},served={};ITEMS.forEach(i=>q[i.k]=sent[i.k]=served[i.k]=0);return{q,sent,served,name:"",reservedPeople:0,notes:"",updated:null,stage:0,requests:{},payment:"Cash",cardPaid:false,cardNote:"",received:0,position:POSITIONS[t-1]||("➕ Tavolinë "+t)}}
-function normalize(t){if(!db[t])db[t]=blank(t);let b=db[t];b.q=b.q||{};b.sent=b.sent||{};b.served=b.served||{};ITEMS.forEach(i=>{if(b.q[i.k]==null)b.q[i.k]=0;if(b.sent[i.k]==null)b.sent[i.k]=0;if(b.served[i.k]==null)b.served[i.k]=0});if(b.q.menu!=null&&b.q.normal==null)b.q.normal=b.q.menu||0;if(!b.position)b.position=POSITIONS[t-1]||("➕ Tavolinë "+t);if(b.reservedPeople==null)b.reservedPeople=b.persons||0;if(b.cardPaid==null)b.cardPaid=false;if(b.received==null)b.received=0;if(!b.payment)b.payment="Cash";if(!b.requests)b.requests={};if(typeof b.stage!=="number")b.stage=0}
+
+function positionFor(t){return t<=10?BASE_POSITIONS[t-1]:`➕ Tavolinë Shtesë ${t-10}`}
+function blank(t){const q={},sent={},served={};ITEMS.forEach(i=>q[i.k]=sent[i.k]=served[i.k]=0);return{q,sent,served,name:"",reservedPeople:0,notes:"",updated:null,stage:0,requests:{},payment:"Cash",cardPaid:true,cardNote:"",received:"",workDate:"",position:positionFor(t)}}
+function normalize(t){
+ if(!db[t])db[t]=blank(t);
+ const b=db[t];b.q=b.q||{};b.sent=b.sent||{};b.served=b.served||{};
+ if(b.q.menu!=null&&b.q.normal==null)b.q.normal=b.q.menu||0;
+ ITEMS.forEach(i=>{if(b.q[i.k]==null)b.q[i.k]=0;if(b.sent[i.k]==null)b.sent[i.k]=0;if(b.served[i.k]==null)b.served[i.k]=0});
+ b.position=positionFor(t);
+ if(b.name&&/^Tavolina\s+\d+$/i.test(b.name))b.name="";
+ if(b.reservedPeople==null)b.reservedPeople=Number(b.persons)||0;
+ if(!b.payment)b.payment="Cash";if(typeof b.cardPaid!=="boolean")b.cardPaid=b.payment==="Cash";
+ if(b.cardNote==null)b.cardNote="";if(b.received==null)b.received=b.receivedAmount??"";
+ if(typeof b.stage!=="number")b.stage=0;if(!b.requests)b.requests={};if(b.workDate==null)b.workDate="";
+}
 for(let t=1;t<=MAX_TABLES;t++)normalize(t);
+history.forEach(x=>{
+ if(x.position==null)x.position=x.table?positionFor(Number(x.table)):"";
+ if(x.tip==null)x.tip=Math.max(0,(Number(x.received||x.receivedAmount)||Number(x.total)||0)-(Number(x.total)||0));
+ if(x.received==null)x.received=Number(x.receivedAmount)||Number(x.total)||0;
+ if(typeof x.cardPaid!=="boolean")x.cardPaid=x.payment==="Cash";
+});
 function save(){localStorage.setItem(DB_KEY,JSON.stringify(db));localStorage.setItem(HIST_KEY,JSON.stringify(history));localStorage.setItem(COUNT_KEY,String(tableCount))}
-function money(v){return "€"+Number(v||0).toFixed(2)}function stamp(){return new Date().toLocaleString("sq-AL")}
+function money(v){return "€"+Number(v||0).toFixed(2)} function stamp(){return new Date().toLocaleString("sq-AL")}
 function total(t){return ITEMS.reduce((s,i)=>s+(Number(db[t].q[i.k])||0)*i.p,0)}
 function menuPeople(t){return ["normal","veg","kids","group"].reduce((s,k)=>s+(Number(db[t].q[k])||0),0)}
 function people(t){return menuPeople(t)||Number(db[t].reservedPeople)||0}
-function tipAmount(t){return Math.max(0,(Number(db[t].received)||0)-total(t))}
 function pending(t,k){return Math.max(0,(db[t].q[k]||0)-(db[t].served[k]||0))}
 function pendingCount(t){return ITEMS.filter(i=>i.type==="drink").reduce((s,i)=>s+pending(t,i.k),0)}
 function hasRequests(t){return Object.values(db[t].requests||{}).some(Boolean)}
+function tipForTable(t){if(db[t].received==="")return 0;return Math.max(0,(Number(db[t].received)||0)-total(t))}
 function isoDate(){return $("workDate").value||new Date().toISOString().slice(0,10)}
+function shiftDate(v,n){const d=new Date(v+"T12:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
+
 $("workDate").value=localStorage.getItem(DATE_KEY)||new Date().toISOString().slice(0,10);$("historyDate").value=$("workDate").value;
 function saveWorkDate(){localStorage.setItem(DATE_KEY,$("workDate").value);$("historyDate").value=$("workDate").value;drawTables()}
-function today(){$("workDate").value=new Date().toISOString().slice(0,10);saveWorkDate()}
-function moveDate(n){let d=new Date($("workDate").value+"T12:00:00");d.setDate(d.getDate()+n);$("workDate").value=d.toISOString().slice(0,10);saveWorkDate()}
-function hideAll(){document.querySelectorAll("main section").forEach(x=>x.classList.add("hidden"));["tabTables","tabKitchen","tabHistory","tabStats"].forEach(x=>$(x).classList.remove("active"))}
+function shiftWorkDate(n){$("workDate").value=shiftDate(isoDate(),n);saveWorkDate()}
+function setToday(){$("workDate").value=new Date().toISOString().slice(0,10);saveWorkDate()}
+function shiftHistoryDate(n){$("historyDate").value=shiftDate($("historyDate").value,n);drawHistory()}
+
+function hideAll(){document.querySelectorAll("main section").forEach(x=>x.classList.add("hidden"));["tabTables","tabService","tabHistory","tabStats"].forEach(x=>$(x).classList.remove("active"))}
 function showTables(){hideAll();$("tablesView").classList.remove("hidden");$("tabTables").classList.add("active");drawTables()}
-function showKitchen(){hideAll();$("kitchenView").classList.remove("hidden");$("tabKitchen").classList.add("active");drawKitchen()}
+function showService(){hideAll();$("serviceView").classList.remove("hidden");$("tabService").classList.add("active");drawService()}
 function showHistory(){hideAll();$("historyView").classList.remove("hidden");$("tabHistory").classList.add("active");$("historyDate").value=$("workDate").value;drawHistory()}
-function showStats(){hideAll();$("statsView").classList.remove("hidden");$("tabStats").classList.add("active");fillYears();drawStats()}
-function activeTotals(){let revenue=0,tips=0,unpaid=0;for(let t=1;t<=tableCount;t++){revenue+=total(t);tips+=tipAmount(t);if(db[t].payment==="Card"&&!db[t].cardPaid)unpaid+=total(t)}return{revenue,tips,unpaid}}
-function drawTables(){let a=activeTotals();$("liveRevenue").innerHTML=`<div class="livegrid"><div>Xhiro aktive<b>${money(a.revenue)}</b></div><div>Bakshish<b>${money(a.tips)}</b></div><div>Card pa paguar<b class="${a.unpaid?'redtxt':''}">${money(a.unpaid)}</b></div></div>`;$("tables").innerHTML="";
-for(let t=1;t<=tableCount;t++){let p=pendingCount(t),el=document.createElement("button");el.className="table "+(p?"alert":total(t)>0?"active":"");let display=db[t].name||"Pa emër";el.innerHTML=`<h3>${db[t].position}</h3><div class="sub">${display} · 👥 ${people(t)}</div><div class="amount">${money(total(t))}</div>${p?`<div class="redtxt">🔴 ${p} pije për t'u çuar</div>`:""}${db[t].payment==="Card"&&!db[t].cardPaid&&total(t)>0?`<div class="redtxt">💳 Pa paguar</div>`:""}`;el.onclick=()=>openTable(t);$("tables").appendChild(el)}
-$("addTableBtn").classList.toggle("hidden",tableCount>=MAX_TABLES)}
-function addExtraTable(){if(tableCount>=MAX_TABLES)return;tableCount++;normalize(tableCount);db[tableCount].position="➕ Tavolinë Shtesë "+(tableCount-10);save();drawTables()}
-function openTable(t){current=t;hideAll();$("tableView").classList.remove("hidden");$("tableName").value=db[t].name||"";$("reservedPeople").value=db[t].reservedPeople||"";$("notes").value=db[t].notes||"";$("cardNote").value=db[t].cardNote||"";$("received").value=db[t].received||"";drawCurrent()}
-function updateDetails(){let b=db[current];b.name=$("tableName").value.trim();b.reservedPeople=Math.max(0,Number($("reservedPeople").value)||0);b.notes=$("notes").value.trim();b.cardNote=$("cardNote").value.trim();b.updated=stamp();save();drawHeaderOnly()}
-function drawHeaderOnly(){$("tableHeader").textContent=db[current].position+" · "+(db[current].name||"Pa emër");$("topTotal").textContent=money(total(current));$("autoPeople").textContent=`👥 ${people(current)} persona`}
-function setPayment(p){db[current].payment=p;if(p==="Cash")db[current].cardPaid=true;else if(p==="Card"&&db[current].cardPaid==null)db[current].cardPaid=false;save();drawPayment()}
-function setCardPaid(){db[current].cardPaid=$("cardPaid").checked;save()}
-function updateReceived(){db[current].received=Math.max(0,Number($("received").value)||0);save();$("tip").textContent=money(tipAmount(current))}
+function showStats(){hideAll();$("statsView").classList.remove("hidden");$("tabStats").classList.add("active");fillStatsControls();drawStats()}
+
+function activeForDate(t,d){return total(t)>0&&(!db[t].workDate||db[t].workDate===d)}
+function liveRows(payment){
+ const d=isoDate(),rows=[];
+ history.filter(x=>x.date===d&&x.payment===payment).forEach(x=>rows.push({type:"history",id:x.id,name:x.name||"Pa emër",position:x.position||"",total:Number(x.total)||0,paid:payment==="Cash"?true:!!x.cardPaid,tip:Number(x.tip)||0}));
+ for(let t=1;t<=tableCount;t++)if(activeForDate(t,d)&&db[t].payment===payment)rows.push({type:"active",id:t,name:db[t].name||"Pa emër",position:db[t].position,total:total(t),paid:payment==="Cash"?true:!!db[t].cardPaid,tip:tipForTable(t)});
+ return rows;
+}
+function drawLive(){
+ const d=isoDate(),closed=history.filter(x=>x.date===d);
+ let sales=closed.reduce((s,x)=>s+(Number(x.total)||0),0),tips=closed.reduce((s,x)=>s+(Number(x.tip)||0),0),
+ cash=closed.filter(x=>x.payment==="Cash").reduce((s,x)=>s+(Number(x.total)||0),0),
+ card=closed.filter(x=>x.payment==="Card").reduce((s,x)=>s+(Number(x.total)||0),0),
+ unpaid=closed.filter(x=>x.payment==="Card"&&!x.cardPaid).reduce((s,x)=>s+(Number(x.total)||0),0);
+ for(let t=1;t<=tableCount;t++){if(!activeForDate(t,d))continue;const v=total(t);sales+=v;tips+=tipForTable(t);if(db[t].payment==="Card"){card+=v;if(!db[t].cardPaid)unpaid+=v}else cash+=v}
+ $("liveSales").textContent=money(sales);$("liveTips").textContent=money(tips);$("liveCash").textContent=money(cash);$("liveCard").textContent=money(card);$("liveUnpaid").textContent=money(unpaid);
+}
+function drawTables(){
+ drawLive();$("tables").innerHTML="";
+ for(let t=1;t<=tableCount;t++){
+  const p=pendingCount(t),el=document.createElement("button");
+  el.className="table "+(p?"alert":total(t)>0||people(t)>0?"active":"")+(db[t].payment==="Card"&&!db[t].cardPaid&&total(t)>0?" unpaid":"");
+  el.innerHTML=`<div class="position">${db[t].position}</div><div class="guest">${db[t].name||"Pa emër"}</div><div class="meta">👥 ${people(t)} persona</div><div class="amount">${money(total(t))}</div>${p?`<div class="redtxt">🔴 ${p} pije për t'u çuar</div>`:""}${db[t].payment==="Card"&&!db[t].cardPaid&&total(t)>0?`<div class="redtxt">💳 Card pa paguar</div>`:""}`;
+  el.onclick=()=>openTable(t);$("tables").appendChild(el);
+ }
+ $("addTableBtn").classList.toggle("hidden",tableCount>=MAX_TABLES);
+ $("extraInfo").textContent=tableCount>10?`${tableCount-10} tavolina shtesë aktive`:"Mund të shtosh deri në 3 tavolina të tjera.";
+}
+function addExtraTable(){if(tableCount>=MAX_TABLES)return;tableCount++;normalize(tableCount);db[tableCount].position=positionFor(tableCount);save();drawTables()}
+
+function openTable(t){current=t;hideAll();$("tableView").classList.remove("hidden");$("tableName").value=db[t].name||"";$("reservedPeople").value=db[t].reservedPeople||"";$("notes").value=db[t].notes||"";$("cardNote").value=db[t].cardNote||"";$("received").value=db[t].received!==""?db[t].received:"";drawCurrent()}
+function updateDetails(){const b=db[current];b.name=$("tableName").value.trim();b.reservedPeople=Math.max(0,Number($("reservedPeople").value)||0);b.notes=$("notes").value.trim();b.cardNote=$("cardNote").value.trim();b.workDate=b.workDate||isoDate();b.updated=stamp();save();drawHeaderOnly()}
+function drawHeaderOnly(){$("tableHeader").textContent=`${db[current].position} · ${db[current].name||"Pa emër"}`;$("topTotal").textContent=money(total(current));$("autoPeople").textContent=`👥 ${people(current)} persona`;$("tableTotal").textContent=money(total(current));drawTip()}
+function setPayment(p){db[current].payment=p;if(p==="Cash")db[current].cardPaid=true;else if(p==="Card"&&db[current].cardPaid===true)db[current].cardPaid=false;db[current].workDate=db[current].workDate||isoDate();db[current].updated=stamp();save();drawPayment();drawLive()}
+function setCardPaid(v){db[current].cardPaid=!!v;db[current].updated=stamp();save();drawPayment();drawLive()}
 function drawPayment(){$("cashBtn").classList.toggle("selected",db[current].payment==="Cash");$("cardBtn").classList.toggle("selected",db[current].payment==="Card");$("cardBox").classList.toggle("hidden",db[current].payment!=="Card");$("cardPaid").checked=!!db[current].cardPaid}
-function drawCurrent(){drawHeaderOnly();drawPayment();$("tip").textContent=money(tipAmount(current));$("tableTotal").textContent=money(total(current));
-$("statusButtons").innerHTML="";STAGES.forEach((s,n)=>{let b=document.createElement("button");b.className="status-btn "+(db[current].stage===n?"selected":"");b.innerHTML=s.short;b.onclick=()=>{db[current].stage=n;db[current].updated=stamp();save();drawCurrent()};$("statusButtons").appendChild(b)});
-$("requestButtons").innerHTML="";REQUESTS.forEach(r=>{let b=document.createElement("button");b.className="request-btn "+(db[current].requests[r]?"selected":"");b.textContent=r;b.onclick=()=>{db[current].requests[r]=!db[current].requests[r];save();drawCurrent()};$("requestButtons").appendChild(b)});
-$("menus").innerHTML="";ITEMS.filter(i=>i.type==="menu").forEach(i=>{let r=document.createElement("div");r.className="row";r.innerHTML=`<div><div class="name">${i.n}</div><div class="price">${money(i.p)}</div></div><div class="counter"><button class="minus" onclick="change('${i.k}',-1)">−</button><b>${db[current].q[i.k]}</b><button class="plus" onclick="change('${i.k}',1)">+</button></div>`;$("menus").appendChild(r)});
-$("drinkTiles").innerHTML="";$("drinkDetails").innerHTML="";ITEMS.filter(i=>i.type==="drink").forEach(i=>{let p=pending(current,i.k),q=db[current].q[i.k]||0;let b=document.createElement("button");b.className="drinktile";b.innerHTML=`${p?`<span class="badgealert">${p}</span>`:""}<div class="ico">${i.ico}</div><div class="dn">${i.n}</div><div class="dp">${money(i.p)} · kliko +1</div>${q?`<div class="meta">${q} porositur</div>`:""}`;b.onclick=()=>change(i.k,1);$("drinkTiles").appendChild(b);if(q){let s=Math.min(db[current].served[i.k]||0,q);let d=document.createElement("div");d.className="drinkdetail";d.innerHTML=`<div class="drinkhead"><div class="name">${i.ico} ${i.n}</div><button class="minus" onclick="change('${i.k}',-1)">−1</button></div><div class="delivery"><div>Porositur<b>${q}</b></div><div>Dërguar<b>${s}</b></div><div class="${p?'redtxt':''}">Pret<b>${p}</b></div></div><div class="deliverBtns"><button class="delivered" ${p?`onclick="markOne('${i.k}')"`:"disabled"}>✓ Dërgova 1</button><button class="delivered" ${p?`onclick="markAll('${i.k}')"`:"disabled"}>✓ Të gjitha</button></div>`;$("drinkDetails").appendChild(d)}})}
-function change(k,d){db[current].q[k]=Math.max(0,(db[current].q[k]||0)+d);if((db[current].served[k]||0)>db[current].q[k])db[current].served[k]=db[current].q[k];db[current].updated=stamp();save();drawCurrent()}
-function markOne(k){db[current].served[k]=Math.min(db[current].q[k]||0,(db[current].served[k]||0)+1);save();drawCurrent()}
-function markAll(k){db[current].served[k]=db[current].q[k]||0;save();drawCurrent()}
-function nextStage(){if(db[current].stage<STAGES.length-1){db[current].stage++;save();drawCurrent()}}
+function setReceived(v){db[current].received=v===""?"":Math.max(0,Number(v)||0);db[current].workDate=db[current].workDate||isoDate();db[current].updated=stamp();save();drawTip();drawLive()}
+function drawTip(){const box=$("tipBox");if(db[current].received===""){box.className="tipbox";box.textContent="€0.00";return}const d=(Number(db[current].received)||0)-total(current);if(d>=0){box.className="tipbox good";box.textContent=money(d)}else{box.className="tipbox bad";box.textContent="Mungojnë "+money(Math.abs(d))}}
+
+function drawCurrent(){
+ drawHeaderOnly();drawPayment();
+ $("statusButtons").innerHTML="";STAGES.forEach((s,n)=>{const b=document.createElement("button");b.className="status-btn "+(db[current].stage===n?"selected":"");b.innerHTML=s.short;b.onclick=()=>{db[current].stage=n;db[current].workDate=db[current].workDate||isoDate();db[current].updated=stamp();save();drawCurrent()};$("statusButtons").appendChild(b)});
+ $("requestButtons").innerHTML="";REQUESTS.forEach(r=>{const b=document.createElement("button");b.className="reqbtn "+(db[current].requests[r]?"selected":"");b.textContent=r;b.onclick=()=>{db[current].requests[r]=!db[current].requests[r];db[current].updated=stamp();save();drawCurrent()};$("requestButtons").appendChild(b)});
+ $("menus").innerHTML="";ITEMS.filter(i=>i.type==="menu").forEach(i=>{const r=document.createElement("div");r.className="row";r.innerHTML=`<div><div class="name">${i.n}</div><div class="price">${money(i.p)}</div></div><div class="counter"><button class="minus" onclick="change('${i.k}',-1)">−</button><b>${db[current].q[i.k]}</b><button class="plus" onclick="change('${i.k}',1)">+</button></div>`;$("menus").appendChild(r)});
+ drawDrinks();
+}
+function drawDrinks(){
+ $("drinkTiles").innerHTML="";ITEMS.filter(i=>i.type==="drink").forEach(i=>{const q=db[current].q[i.k]||0,p=pending(current,i.k),b=document.createElement("button");b.className="drinktile";b.innerHTML=`${p?`<span class="badgealert">${p}</span>`:""}<div class="ico">${i.ico}</div><div class="dn">${i.n}</div><div class="dp">${money(i.p)} · kliko +1</div>${q?`<div class="meta">${q} porositur</div>`:""}`;b.onclick=()=>change(i.k,1);$("drinkTiles").appendChild(b)});
+ $("drinkDetails").innerHTML="";ITEMS.filter(i=>i.type==="drink"&&(db[current].q[i.k]||0)>0).forEach(i=>{const q=db[current].q[i.k]||0,s=Math.min(db[current].served[i.k]||0,q),p=pending(current,i.k),d=document.createElement("div");d.className="drinkdetail";d.innerHTML=`<div class="drinkhead"><b>${i.ico} ${i.n}</b><button class="minus" onclick="change('${i.k}',-1)">−</button></div><div class="delivery"><div>Porositur<b>${q}</b></div><div>Dërguar<b>${s}</b></div><div class="pending">Pret<b>${p}</b></div></div><div class="deliverBtns"><button ${p===0?"disabled":""} onclick="markOne('${i.k}')">✓ Dërgova 1</button><button ${p===0?"disabled":""} onclick="markAll('${i.k}')">✓ Të gjitha</button></div>`;$("drinkDetails").appendChild(d)});
+}
+function change(k,d){db[current].q[k]=Math.max(0,(db[current].q[k]||0)+d);if((db[current].served[k]||0)>db[current].q[k])db[current].served[k]=db[current].q[k];db[current].workDate=db[current].workDate||isoDate();db[current].updated=stamp();save();drawCurrent();drawLive()}
+function markOne(k){db[current].served[k]=Math.min(db[current].q[k]||0,(db[current].served[k]||0)+1);db[current].updated=stamp();save();drawCurrent();drawLive()}
+function markAll(k){db[current].served[k]=db[current].q[k]||0;db[current].updated=stamp();save();drawCurrent();drawLive()}
+function nextStage(){if(db[current].stage<STAGES.length-1){db[current].stage++;db[current].updated=stamp();save();drawCurrent()}}
+
 function linesForTable(t){return ITEMS.filter(i=>(db[t].q[i.k]||0)>0).map(i=>({key:i.k,name:i.n,qty:db[t].q[i.k],price:i.p,subtotal:db[t].q[i.k]*i.p}))}
 function shareText(txt){location.href="https://wa.me/?text="+encodeURIComponent(txt)}
-function kitchenText(t){let b=db[t],n=people(t),x=`👨‍🍳 TASTE HOME — KUZHINA\n🪑 ${b.position}${b.name?" — "+b.name:""}\n👥 ${n} persona\n\nPËRGATIT ${n} ${STAGES[b.stage].msg}`;if(b.stage===3){let parts=[];["normal","veg","kids","group"].forEach(k=>{let i=ITEMS.find(z=>z.k===k),q=b.q[k]||0;if(q)parts.push(`${q} ${i.n}`)});if(parts.length)x+=`\n${parts.join("\n")}`}let req=Object.keys(b.requests||{}).filter(k=>b.requests[k]);if(req.length)x+=`\n\nKërkesa: ${req.join(", ")}`;let pend=ITEMS.filter(i=>i.type==="drink"&&pending(t,i.k)>0).map(i=>`${i.n}: ${pending(t,i.k)}`);if(pend.length)x+=`\n\n🥂 Për t'u çuar:\n${pend.join("\n")}`;if(b.notes)x+=`\n\nShënim: ${b.notes}`;return x}
-function sendKitchenUpdate(){if(!people(current))return alert("Vendos personat ose menutë.");let x=kitchenText(current);db[current].requests={};db[current].updated=stamp();save();drawCurrent();shareText(x)}
-function invoiceText(t){let b=db[t],x=`Taste Home\nData: ${isoDate()}\n${b.position}${b.name?" — "+b.name:""}\nPersona: ${people(t)}\nPagesa: ${b.payment}`;if(b.payment==="Card")x+=` — ${b.cardPaid?"PAGUAR":"PA PAGUAR"}`;x+="\n";linesForTable(t).forEach(a=>x+=`${a.name}: ${a.qty} × ${money(a.price)} = ${money(a.subtotal)}\n`);x+=`----------------\nTOTALI: ${money(total(t))}`;if(tipAmount(t))x+=`\nBakshish: ${money(tipAmount(t))}`;return x}
+function kitchenText(t){
+ const b=db[t],n=people(t),stage=STAGES[b.stage];let x=`👨‍🍳 TASTE HOME — KUZHINA\n🪑 ${b.position}${b.name?" — "+b.name:""}\n👥 ${n} persona\n\nPËRGATIT ${n} ${stage.msg}`;
+ if(b.stage===3){const parts=[];["normal","veg","kids","group"].forEach(k=>{const q=b.q[k]||0,i=ITEMS.find(z=>z.k===k);if(q)parts.push(`${q} ${i.n}`)});if(parts.length)x+=`\n${parts.join("\n")}`}
+ const req=Object.keys(b.requests||{}).filter(k=>b.requests[k]);if(req.length)x+=`\n\nKërkesa: ${req.join(", ")}`;
+ const pend=ITEMS.filter(i=>i.type==="drink"&&pending(t,i.k)>0).map(i=>`${i.n}: ${pending(t,i.k)}`);if(pend.length)x+=`\n\n🥂 Për t'u çuar:\n${pend.join("\n")}`;
+ if(b.notes)x+=`\n\nShënim: ${b.notes}`;return x;
+}
+function sendKitchenUpdate(){if(!people(current))return alert("Vendos personat ose menutë.");const x=kitchenText(current);db[current].requests={};db[current].updated=stamp();save();drawCurrent();shareText(x)}
+function invoiceText(t){const b=db[t];let x=`Taste Home\nData: ${b.workDate||isoDate()}\n${b.position}${b.name?" — "+b.name:""}\nPersona: ${people(t)}\nPagesa: ${b.payment}`;if(b.payment==="Card")x+=` — ${b.cardPaid?"PAGUAR":"PA PAGUAR"}`;x+="\n";linesForTable(t).forEach(a=>x+=`${a.name}: ${a.qty} × ${money(a.price)} = ${money(a.subtotal)}\n`);x+=`----------------\nTOTALI: ${money(total(t))}`;if(db[t].received!=="")x+=`\nShuma e marrë: ${money(db[t].received)}\nBakshishi: ${money(tipForTable(t))}`;return x}
 function shareCurrent(){if(total(current)<=0)return alert("Tavolina është bosh.");shareText(invoiceText(current))}
 function printCurrent(){if(total(current)<=0)return alert("Tavolina është bosh.");$("printArea").innerHTML=`<div style="font-family:Arial;max-width:420px;margin:auto"><h2>Taste Home</h2>${invoiceText(current).replace(/\n/g,"<br>")}</div>`;window.print()}
-function closeCurrent(){if(total(current)<=0)return alert("Tavolina është bosh.");let b=db[current];history.unshift({id:Date.now(),table:current,position:b.position,name:b.name,persons:people(current),notes:b.notes,payment:b.payment,cardPaid:b.cardPaid,cardNote:b.cardNote,date:isoDate(),closedAt:stamp(),lines:linesForTable(current),total:total(current),received:Number(b.received)||0,tip:tipAmount(current)});let pos=b.position;db[current]=blank(current);db[current].position=pos;save();alert("Tavolina u ruajt në histori.");showTables()}
-function clearCurrent(){if(confirm("Ta fshij pa e ruajtur në histori?")){let pos=db[current].position;db[current]=blank(current);db[current].position=pos;save();showTables()}}
-function drawKitchen(){$("kitchenList").innerHTML="";let n=0;for(let t=1;t<=tableCount;t++){if(!(total(t)>0||hasRequests(t)||pendingCount(t)))continue;n++;let c=document.createElement("div");c.className="card kitchen-card "+(pendingCount(t)?"waiting":"");c.innerHTML=`<h3>${db[t].position}${db[t].name?" — "+db[t].name:""}</h3><div><b>${STAGES[db[t].stage].msg} · 👥 ${people(t)}</b></div>${pendingCount(t)?`<div class="redtxt">🔴 ${pendingCount(t)} pije për t'u çuar</div>`:""}${db[t].notes?`<div class="meta">${db[t].notes}</div>`:""}`;$("kitchenList").appendChild(c)}if(!n)$("kitchenList").innerHTML='<div class="card empty">Nuk ka tavolina aktive.</div>'}
+function closeCurrent(){
+ if(total(current)<=0)return alert("Tavolina është bosh.");
+ if(db[current].payment==="Card"&&!db[current].cardPaid&&!confirm("Card është PAPAGUAR. Ta mbyll tavolinën gjithsesi?"))return;
+ if(!confirm(`Ta mbyll ${db[current].name||"Pa emër"} te ${db[current].position}?`))return;
+ const b=db[current],received=b.received===""?total(current):Number(b.received)||0;
+ history.unshift({id:Date.now(),table:current,position:b.position,name:b.name||"",persons:people(current),notes:b.notes,payment:b.payment,cardPaid:b.payment==="Cash"?true:!!b.cardPaid,cardNote:b.cardNote,date:b.workDate||isoDate(),closedAt:stamp(),lines:linesForTable(current),total:total(current),received,tip:Math.max(0,received-total(current))});
+ const pos=b.position;db[current]=blank(current);db[current].position=pos;save();showTables();
+}
+function clearCurrent(){if(confirm("Ta fshij pa e ruajtur në histori?")){const pos=db[current].position;db[current]=blank(current);db[current].position=pos;save();showTables()}}
+
+function drawService(){
+ $("serviceList").innerHTML="";let n=0;
+ for(let t=1;t<=tableCount;t++){if(!(total(t)>0||people(t)>0||hasRequests(t)||pendingCount(t)))continue;n++;const c=document.createElement("div"),pend=pendingCount(t);c.className="card service-card "+(pend?"waiting":"");c.innerHTML=`<div class="section-title"><div><h3>${db[t].name||"Pa emër"}</h3><div class="meta">${db[t].position}</div></div><span class="badge">👥 ${people(t)}</span></div><div><b>PËRGATIT ${people(t)} ${STAGES[db[t].stage].msg}</b></div>${pend?`<div style="margin-top:6px"><span class="badge warnbadge">🔴 ${pend} pije për t'u çuar</span></div>`:""}${db[t].notes?`<div class="meta" style="margin-top:5px">📝 ${db[t].notes}</div>`:""}<button class="back" style="margin-top:8px;width:100%" onclick="openTable(${t})">Hap tavolinën</button>`;$("serviceList").appendChild(c)}
+ if(!n)$("serviceList").innerHTML='<div class="card empty">Nuk ka tavolina aktive.</div>';
+}
+
 function filtered(){return history.filter(x=>x.date===$("historyDate").value)}
-function drawHistory(){let day=filtered(),grand=day.reduce((s,x)=>s+x.total,0),tips=day.reduce((s,x)=>s+(x.tip||0),0),cash=day.filter(x=>x.payment==="Cash").reduce((s,x)=>s+x.total,0),card=day.filter(x=>x.payment==="Card").reduce((s,x)=>s+x.total,0),unpaid=day.filter(x=>x.payment==="Card"&&!x.cardPaid).reduce((s,x)=>s+x.total,0);$("dailyTotal").innerHTML=`Xhiro: ${money(grand)} · Bakshish: ${money(tips)}<br><span style="font-size:15px">Cash ${money(cash)} · Card ${money(card)} · Card pa paguar ${money(unpaid)}</span>`;$("historyBox").innerHTML=day.length?"":'<div class="empty">Nuk ka fatura.</div>';day.forEach(inv=>{let c=document.createElement("div");c.className="card";c.innerHTML=`<h3>${inv.position||""}${inv.name?" — "+inv.name:""} — ${money(inv.total)}</h3><div class="meta">${inv.closedAt}</div><div><span class="badge">👥 ${inv.persons||0}</span><span class="badge">${inv.payment||""}</span>${inv.payment==="Card"?`<span class="badge ${!inv.cardPaid?"redtxt":""}">${inv.cardPaid?"Paguar":"Pa paguar"}</span>`:""}<span class="badge">Tip ${money(inv.tip||0)}</span></div>${(inv.lines||[]).map(x=>`<div class="invoice-line"><span>${x.name} × ${x.qty}</span><b>${money(x.subtotal)}</b></div>`).join("")}<div class="actions"><button class="share" onclick="shareInvoice(${inv.id})">WhatsApp</button><button class="delete" onclick="deleteInvoice(${inv.id})">Fshij</button></div>`;$("historyBox").appendChild(c)})}
-function shareInvoice(id){let inv=history.find(x=>x.id===id);if(!inv)return;let x=`Taste Home\n${inv.date}\n${inv.position||""} ${inv.name||""}\nPersona: ${inv.persons||0}\n`;inv.lines.forEach(a=>x+=`${a.name}: ${a.qty} × ${money(a.price)} = ${money(a.subtotal)}\n`);x+=`TOTALI: ${money(inv.total)}\nBakshish: ${money(inv.tip||0)}`;shareText(x)}
-function deleteInvoice(id){if(confirm("Ta fshij faturën?")){history=history.filter(x=>x.id!==id);save();drawHistory()}}
-function clearHistoryForDate(){let d=$("historyDate").value;if(confirm("T'i fshij të gjitha faturat e "+d+"?")){history=history.filter(x=>x.date!==d);save();drawHistory()}}
-function shareDaily(){let day=filtered(),grand=day.reduce((s,x)=>s+x.total,0),tips=day.reduce((s,x)=>s+(x.tip||0),0);shareText(`Taste Home — ${$("historyDate").value}\nFatura: ${day.length}\nXhiro: ${money(grand)}\nBakshish: ${money(tips)}`)}
-function qtyHistory(arr,i){return arr.reduce((s,inv)=>s+(inv.lines||[]).filter(x=>x.name===i.n||(i.k==="normal"&&x.name==="Menu")).reduce((a,x)=>a+(Number(x.qty)||0),0),0)}
 function inferPeople(inv){return (inv.lines||[]).filter(x=>["Menu","Menu Normale","Menu Vegjet","Menu Kids","Grup"].includes(x.name)).reduce((s,x)=>s+(Number(x.qty)||0),0)}
-let statsMode="year";
-function setStatsMode(m){statsMode=m;$("statsAnnualBtn").classList.toggle("selected",m==="year");$("statsMonthlyBtn").classList.toggle("selected",m==="month");$("statsWeeklyBtn").classList.toggle("selected",m==="week");$("statsYearBox").classList.toggle("hidden",m!=="year");$("statsMonthBox").classList.toggle("hidden",m!=="month");$("statsWeekBox").classList.toggle("hidden",m!=="week");drawStats()}
-function fillYears(){let ys=[...new Set(history.map(x=>(x.date||"").slice(0,4)).filter(Boolean))].sort().reverse(),now=String(new Date().getFullYear());if(!ys.includes(now))ys.unshift(now);$("statsYear").innerHTML=ys.map(y=>`<option>${y}</option>`).join("");$("statsYear").value=now;let td=new Date();$("statsMonth").value=td.toISOString().slice(0,7);let d=new Date(Date.UTC(td.getFullYear(),td.getMonth(),td.getDate())),dn=d.getUTCDay()||7;d.setUTCDate(d.getUTCDate()+4-dn);let y0=new Date(Date.UTC(d.getUTCFullYear(),0,1)),wn=Math.ceil((((d-y0)/86400000)+1)/7);$("statsWeek").value=`${d.getUTCFullYear()}-W${String(wn).padStart(2,"0")}`}
-function weekRange(v){if(!v)return null;let [y,w]=v.split("-W").map(Number),j=new Date(y,0,4),jd=j.getDay()||7,mon=new Date(y,0,4-(jd-1)+(w-1)*7);mon.setHours(0,0,0,0);let sun=new Date(mon);sun.setDate(mon.getDate()+6);sun.setHours(23,59,59,999);return[mon,sun]}
-function statsFiltered(){if(statsMode==="month"){let m=$("statsMonth").value;return history.filter(x=>(x.date||"").startsWith(m))}if(statsMode==="week"){let r=weekRange($("statsWeek").value);return r?history.filter(x=>{let d=new Date((x.date||"")+"T12:00:00");return d>=r[0]&&d<=r[1]}):[]}return history.filter(x=>(x.date||"").startsWith($("statsYear").value))}
-function chart(el,vals,kind,labels){let max=Math.max(...vals,1);$(el).innerHTML=vals.map((v,i)=>`<div class="barwrap"><div class="barval">${kind==="money"?"€"+Math.round(v):v}</div><div class="bar" style="height:${Math.max(2,(v/max)*145)}px"></div><div>${labels[i]||""}</div></div>`).join("")}
-function drawStats(){let arr=statsFiltered(),persons=arr.reduce((s,x)=>s+(Number(x.persons)||inferPeople(x)),0),revenue=arr.reduce((s,x)=>s+(Number(x.total)||0),0),tips=arr.reduce((s,x)=>s+(Number(x.tip)||0),0);$("statsPeriodLabel").textContent=`${arr.length} fatura`;$("statsCards").innerHTML=[["👥 Persona",persons],["🍽️ Normale",qtyHistory(arr,ITEMS[0])],["🥬 Vegjet",qtyHistory(arr,ITEMS[1])],["🧒 Kids",qtyHistory(arr,ITEMS[2])],["👥 Grup",qtyHistory(arr,ITEMS[3])],["💰 Xhiro",money(revenue)],["💶 Bakshish",money(tips)],["Mes./person",persons?money(revenue/persons):money(0)]].map(a=>`<div class="stat"><span>${a[0]}</span><b>${a[1]}</b></div>`).join("");
-let pv=[],rv=[],tv=[],labels=[];if(statsMode==="year"){pv=Array(12).fill(0);rv=Array(12).fill(0);tv=Array(12).fill(0);labels=["J","S","M","P","M","Q","K","G","S","T","N","D"];arr.forEach(x=>{let m=Number((x.date||"").slice(5,7))-1;if(m>=0){pv[m]+=Number(x.persons)||inferPeople(x);rv[m]+=Number(x.total)||0;tv[m]+=Number(x.tip)||0}})}else if(statsMode==="month"){let [y,m]=($("statsMonth").value||"0-0").split("-").map(Number),days=new Date(y,m,0).getDate();pv=Array(days).fill(0);rv=Array(days).fill(0);tv=Array(days).fill(0);labels=Array.from({length:days},(_,i)=>String(i+1));arr.forEach(x=>{let d=Number((x.date||"").slice(8,10))-1;if(d>=0){pv[d]+=Number(x.persons)||inferPeople(x);rv[d]+=Number(x.total)||0;tv[d]+=Number(x.tip)||0}})}else{pv=Array(7).fill(0);rv=Array(7).fill(0);tv=Array(7).fill(0);labels=["H","M","M","E","P","S","D"];let r=weekRange($("statsWeek").value);if(r)arr.forEach(x=>{let d=new Date((x.date||"")+"T12:00:00"),idx=Math.floor((d-r[0])/86400000);if(idx>=0&&idx<7){pv[idx]+=Number(x.persons)||inferPeople(x);rv[idx]+=Number(x.total)||0;tv[idx]+=Number(x.tip)||0}})}chart("peopleChart",pv,"num",labels);chart("revenueChart",rv,"money",labels);chart("tipsChart",tv,"money",labels)}
+function qtyHistory(arr,i){return arr.reduce((s,inv)=>s+(inv.lines||[]).filter(x=>x.name===i.n||(i.k==="normal"&&x.name==="Menu")).reduce((a,x)=>a+(Number(x.qty)||0),0),0)}
+function drawHistory(){
+ const day=filtered(),grand=day.reduce((s,x)=>s+(Number(x.total)||0),0),tips=day.reduce((s,x)=>s+(Number(x.tip)||0),0),cash=day.filter(x=>x.payment==="Cash").reduce((s,x)=>s+(Number(x.total)||0),0),card=day.filter(x=>x.payment==="Card").reduce((s,x)=>s+(Number(x.total)||0),0),paid=day.filter(x=>x.payment==="Card"&&x.cardPaid).reduce((s,x)=>s+(Number(x.total)||0),0),unpaid=day.filter(x=>x.payment==="Card"&&!x.cardPaid).reduce((s,x)=>s+(Number(x.total)||0),0);
+ $("dailyTotal").innerHTML=`<b style="font-size:20px;color:var(--green)">Xhiro: ${money(grand)}</b> · 🎁 ${money(tips)}<br><span class="meta">Cash ${money(cash)} · Card ${money(card)} · ✅ ${money(paid)} · ⏳ ${money(unpaid)}</span>`;
+ $("historyBox").innerHTML=day.length?"":'<div class="card empty">Nuk ka fatura për këtë datë.</div>';
+ day.forEach(inv=>{const c=document.createElement("div");c.className="card";c.innerHTML=`<div class="section-title"><div><h3>${inv.name||"Pa emër"}</h3><div class="meta">${inv.position||""}</div></div><b>${money(inv.total)}</b></div><div class="meta">${inv.closedAt}</div><div><span class="badge">👥 ${inv.persons||0}</span><span class="badge">${inv.payment||""}</span>${inv.payment==="Card"?`<span class="badge ${!inv.cardPaid?"warnbadge":""}">${inv.cardPaid?"✅ Paguar":"⏳ Papaguar"}</span>`:""}<span class="badge">🎁 ${money(inv.tip||0)}</span></div>${(inv.lines||[]).map(x=>`<div class="invoice-line"><span>${x.name} × ${x.qty}</span><b>${money(x.subtotal)}</b></div>`).join("")}<div class="meta">Marrë: ${money(inv.received||inv.total)} · Bakshish: ${money(inv.tip||0)}</div><div class="actions"><button class="invoice" onclick="shareInvoice(${inv.id})">WhatsApp</button><button class="delete" onclick="deleteInvoice(${inv.id})">Fshij</button></div>`;$("historyBox").appendChild(c)});
+}
+function shareInvoice(id){const inv=history.find(x=>x.id===id);if(!inv)return;let x=`Taste Home\n${inv.date}\n${inv.position||""}${inv.name?" — "+inv.name:""}\nPersona: ${inv.persons||0}\n`;(inv.lines||[]).forEach(a=>x+=`${a.name}: ${a.qty} × ${money(a.price)} = ${money(a.subtotal)}\n`);x+=`TOTALI: ${money(inv.total)}\nBakshish: ${money(inv.tip||0)}`;shareText(x)}
+function deleteInvoice(id){if(confirm("Ta fshij faturën?")){history=history.filter(x=>x.id!==id);save();drawHistory()}}
+function clearHistoryForDate(){const d=$("historyDate").value;if(confirm("T'i fshij të gjitha faturat e "+d+"?")){history=history.filter(x=>x.date!==d);save();drawHistory()}}
+function shareDaily(){const day=filtered(),grand=day.reduce((s,x)=>s+(Number(x.total)||0),0),tips=day.reduce((s,x)=>s+(Number(x.tip)||0),0);shareText(`Taste Home — ${$("historyDate").value}\nFatura: ${day.length}\nXhiro: ${money(grand)}\nBakshish: ${money(tips)}\nTotali marrë: ${money(grand+tips)}`)}
+
+function openCardList(){const rows=liveRows("Card"),paid=rows.filter(x=>x.paid),unpaid=rows.filter(x=>!x.paid);$("cardModalBody").innerHTML=`<div class="card"><div class="section-title"><h3>✅ PAGUARA</h3><b>${money(paid.reduce((s,x)=>s+x.total,0))}</b></div>${paid.length?paid.map(x=>payRow(x,false)).join(""):'<div class="meta">Asnjë.</div>'}</div><div class="card"><div class="section-title"><h3>⏳ PAPAGUARA</h3><b>${money(unpaid.reduce((s,x)=>s+x.total,0))}</b></div>${unpaid.length?unpaid.map(x=>payRow(x,true)).join(""):'<div class="meta">Asnjë.</div>'}</div>`;$("cardModal").classList.remove("hidden")}
+function openCashList(){const rows=liveRows("Cash");$("cashModalBody").innerHTML=`<div class="card"><div class="section-title"><h3>Cash sot</h3><b>${money(rows.reduce((s,x)=>s+x.total,0))}</b></div>${rows.length?rows.map(x=>payRow(x,false)).join(""):'<div class="meta">Asnjë.</div>'}</div>`;$("cashModal").classList.remove("hidden")}
+function payRow(x,canPay){return `<div class="payrow"><div><div class="who">${x.name}</div><div class="meta">${x.position} · ${money(x.total)}${x.tip?` · 🎁 ${money(x.tip)}`:""}</div></div>${canPay?`<button onclick="markPaid('${x.type}',${x.id})">✓ Paguar</button>`:""}</div>`}
+function markPaid(type,id){if(type==="active"){db[id].cardPaid=true;db[id].updated=stamp()}else{const x=history.find(a=>a.id===id);if(x)x.cardPaid=true}save();drawLive();openCardList();if(!$("historyView").classList.contains("hidden"))drawHistory()}
+function closeModal(id){$(id).classList.add("hidden")}function modalBg(e,id){if(e.target.id===id)closeModal(id)}
+
+function setStatsMode(m){statsMode=m;$("statsYearBtn").classList.toggle("selected",m==="year");$("statsMonthBtn").classList.toggle("selected",m==="month");$("statsWeekBtn").classList.toggle("selected",m==="week");$("statsYearBox").classList.toggle("hidden",m!=="year");$("statsMonthBox").classList.toggle("hidden",m!=="month");$("statsWeekBox").classList.toggle("hidden",m!=="week");drawStats()}
+function fillStatsControls(){
+ const ys=[...new Set(history.map(x=>(x.date||"").slice(0,4)).filter(Boolean))].sort().reverse(),now=String(new Date().getFullYear());if(!ys.includes(now))ys.unshift(now);$("statsYear").innerHTML=ys.map(y=>`<option>${y}</option>`).join("");$("statsYear").value=now;
+ const td=new Date();$("statsMonth").value=td.toISOString().slice(0,7);const d=new Date(Date.UTC(td.getFullYear(),td.getMonth(),td.getDate())),dn=d.getUTCDay()||7;d.setUTCDate(d.getUTCDate()+4-dn);const y0=new Date(Date.UTC(d.getUTCFullYear(),0,1)),wn=Math.ceil((((d-y0)/86400000)+1)/7);$("statsWeek").value=`${d.getUTCFullYear()}-W${String(wn).padStart(2,"0")}`;
+}
+function weekRange(v){if(!v)return null;const [y,w]=v.split("-W").map(Number),j=new Date(y,0,4),jd=j.getDay()||7,mon=new Date(y,0,4-(jd-1)+(w-1)*7);mon.setHours(0,0,0,0);const sun=new Date(mon);sun.setDate(mon.getDate()+6);sun.setHours(23,59,59,999);return[mon,sun]}
+function statsFiltered(){if(statsMode==="month"){const m=$("statsMonth").value;return history.filter(x=>(x.date||"").startsWith(m))}if(statsMode==="week"){const r=weekRange($("statsWeek").value);if(!r)return[];return history.filter(x=>{const d=new Date((x.date||"")+"T12:00:00");return d>=r[0]&&d<=r[1]})}return history.filter(x=>(x.date||"").startsWith($("statsYear").value))}
+function chart(el,vals,kind,labels,tip=false){const max=Math.max(...vals,1);$(el).innerHTML=vals.map((v,i)=>`<div class="barwrap"><div class="barval">${kind==="money"?"€"+Math.round(v):v}</div><div class="bar ${tip?"tipbar":""}" style="height:${Math.max(2,(v/max)*140)}px"></div><div>${labels[i]||""}</div></div>`).join("")}
+function drawStats(){
+ const arr=statsFiltered(),persons=arr.reduce((s,x)=>s+(Number(x.persons)||inferPeople(x)),0),revenue=arr.reduce((s,x)=>s+(Number(x.total)||0),0),tips=arr.reduce((s,x)=>s+(Number(x.tip)||0),0),cash=arr.filter(x=>x.payment==="Cash").reduce((s,x)=>s+(Number(x.total)||0),0),card=arr.filter(x=>x.payment==="Card").reduce((s,x)=>s+(Number(x.total)||0),0),paid=arr.filter(x=>x.payment==="Card"&&x.cardPaid).reduce((s,x)=>s+(Number(x.total)||0),0),unpaid=arr.filter(x=>x.payment==="Card"&&!x.cardPaid).reduce((s,x)=>s+(Number(x.total)||0),0);
+ $("statsPeriodLabel").textContent=`${arr.length} fatura`;
+ const cards=[["👥 Persona",persons],["🍽️ Normale",qtyHistory(arr,ITEMS[0])],["🥬 Vegjet",qtyHistory(arr,ITEMS[1])],["🧒 Kids",qtyHistory(arr,ITEMS[2])],["👥 Grup",qtyHistory(arr,ITEMS[3])],["🍺 Birrë",qtyHistory(arr,ITEMS[4])],["🍷 Verë kuqe",qtyHistory(arr,ITEMS[5])],["🥂 Verë bardhë",qtyHistory(arr,ITEMS[6])],["🍇 Grape Juice",qtyHistory(arr,ITEMS[7])],["💰 Xhiro",money(revenue)],["🎁 Bakshishe",money(tips)],["💶 Totali marrë",money(revenue+tips)],["💵 Cash",money(cash)],["💳 Card",money(card)],["✅ Card paguar",money(paid)],["⏳ Card papaguar",money(unpaid)],["Bakshish %",revenue?((tips/revenue)*100).toFixed(1)+"%":"0%"],["Mes./person",persons?money(revenue/persons):money(0)]];
+ $("statsCards").innerHTML=cards.map(a=>`<div class="stat"><span>${a[0]}</span><b>${a[1]}</b></div>`).join("");
+ let pv=[],rv=[],tv=[],labels=[];
+ if(statsMode==="year"){pv=Array(12).fill(0);rv=Array(12).fill(0);tv=Array(12).fill(0);labels=["J","S","M","P","M","Q","K","G","S","T","N","D"];arr.forEach(x=>{const m=Number((x.date||"").slice(5,7))-1;if(m>=0){pv[m]+=Number(x.persons)||inferPeople(x);rv[m]+=Number(x.total)||0;tv[m]+=Number(x.tip)||0}})}
+ else if(statsMode==="month"){const [y,m]=($("statsMonth").value||"0-0").split("-").map(Number),days=new Date(y,m,0).getDate();pv=Array(days).fill(0);rv=Array(days).fill(0);tv=Array(days).fill(0);labels=Array.from({length:days},(_,i)=>String(i+1));arr.forEach(x=>{const d=Number((x.date||"").slice(8,10))-1;if(d>=0){pv[d]+=Number(x.persons)||inferPeople(x);rv[d]+=Number(x.total)||0;tv[d]+=Number(x.tip)||0}})}
+ else{pv=Array(7).fill(0);rv=Array(7).fill(0);tv=Array(7).fill(0);labels=["H","M","M","E","P","S","D"];const r=weekRange($("statsWeek").value);if(r)arr.forEach(x=>{const d=new Date((x.date||"")+"T12:00:00"),idx=Math.floor((d-r[0])/86400000);if(idx>=0&&idx<7){pv[idx]+=Number(x.persons)||inferPeople(x);rv[idx]+=Number(x.total)||0;tv[idx]+=Number(x.tip)||0}})}
+ chart("peopleChart",pv,"num",labels);chart("revenueChart",rv,"money",labels);chart("tipsChart",tv,"money",labels,true);
+}
 save();drawTables();
 </script>
-</body></html>
+</body>
+</html>
