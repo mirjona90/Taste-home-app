@@ -40,9 +40,16 @@ input,textarea,select{width:100%;border:1px solid #d9cfc6;border-radius:9px;padd
 .status-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.status-btn{min-height:52px;border-radius:9px;background:#eee;padding:6px 3px;font-size:10px;font-weight:850}.status-btn.selected{background:var(--brand);color:#fff}.next{width:100%;margin-top:7px;background:var(--orange);color:#fff;border-radius:10px;padding:10px;font-weight:900}
 .reqgrid,.paybuttons,.actions,.toolbar{display:grid;grid-template-columns:1fr 1fr;gap:7px}.reqbtn,.paybtn{background:#eee;border-radius:10px;padding:10px;font-weight:900}.reqbtn.selected{background:var(--orange);color:#fff}.paybtn.selected{background:var(--green);color:#fff}
 .drinktiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.drinktile{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;min-height:100px;padding:10px 7px;text-align:center}.drinktile .ico{font-size:30px}.drinktile .dn{font-size:15px;font-weight:950}.drinktile .dp{font-size:11px;color:var(--muted)}.badgealert{position:absolute;top:6px;right:6px;min-width:24px;height:24px;padding:0 6px;background:var(--red);color:#fff;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:950}
-.drinkdetail{border:1px solid var(--line);border-radius:13px;padding:10px;margin-top:8px}.drinkhead{display:flex;justify-content:space-between;align-items:center}.delivery{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin:7px 0;font-size:11px;color:var(--muted)}.delivery b{display:block;font-size:18px;color:var(--text)}.delivery .pending b{color:var(--red)}.deliverBtns{display:grid;grid-template-columns:1fr 1fr;gap:6px}.deliverBtns button{border-radius:9px;padding:9px;font-weight:900}.deliverBtns button:not(:disabled){background:var(--orange);color:#fff}.deliverBtns button:disabled{background:#ddd;color:#999}
-.paidcheck{display:flex;align-items:center;gap:9px;font-weight:850;color:var(--text);margin-top:9px}.paidcheck input{width:20px;height:20px}.tipgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.tipbox{margin-top:7px;padding:9px;border-radius:10px;background:#f4eee8;font-weight:850}.tipbox.good{background:#edf8f2;color:#145b3c}.tipbox.bad{background:#fff0ef;color:#8d201a}
+.drinkdetail{border:1px solid var(--line);border-radius:13px;padding:10px;margin-top:8px}.drinkhead{display:flex;justify-content:space-between;align-items:center}.delivery{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin:7px 0;font-size:11px;color:var(--muted)}.delivery b{display:block;font-size:18px;color:var(--text)}.delivery .pending b{color:var(--red)}.deliverBtns{display:grid;grid-template-columns:1fr 1fr;gap:6px}.deliverBtns.single{grid-template-columns:1fr}.deliverBtns.single button{min-height:46px;font-size:14px}.deliverBtns button{border-radius:9px;padding:9px;font-weight:900}.deliverBtns button:not(:disabled){background:var(--orange);color:#fff}.deliverBtns button:disabled{background:#ddd;color:#999}
+.paidcheck{display:flex;align-items:center;gap:9px;font-weight:850;color:var(--text);margin-top:9px}.paidcheck input{width:20px;height:20px}.tipgrid{display:grid;grid-template-columns:1.35fr 1fr;gap:9px}.tipgrid input#received{min-height:54px;font-size:22px;font-weight:950;padding:11px 12px;border:2px solid #cfc1b6}.tipgrid label{font-size:13px;font-weight:850}.tipgrid .tipbox{min-height:54px;display:flex;align-items:center;font-size:20px;font-weight:950}.tipbox{margin-top:7px;padding:9px;border-radius:10px;background:#f4eee8;font-weight:850}.tipbox.good{background:#edf8f2;color:#145b3c}.tipbox.bad{background:#fff0ef;color:#8d201a}
 .kitchen{background:var(--orange);color:#fff}.print{background:#34495e;color:#fff}.invoice{background:#e8ded4}.delete{background:#f4d7d4;color:var(--red)}.close{background:var(--green);color:#fff}
+.action-zone{background:#fff;border-radius:16px;padding:12px;margin:9px 0;box-shadow:0 2px 9px #00000010}
+.action-zone-title{font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+.action-primary{width:100%;min-height:54px;border-radius:12px;font-size:15px;font-weight:900}
+.action-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.action-pair button{min-height:52px;border-radius:12px;font-size:14px;font-weight:900}
+.action-close{width:100%;min-height:56px;border-radius:12px;font-size:16px;font-weight:950}
+.action-delete{width:100%;min-height:48px;border-radius:12px;font-size:14px;font-weight:900}
 .service-card{border-left:6px solid var(--green)}.service-card.waiting{border-left-color:var(--red)}.badge{display:inline-block;background:#eee;border-radius:999px;padding:4px 7px;font-size:11px;margin:3px 3px 2px 0}.warnbadge{background:#fff0df;color:#9a4d00}.invoice-line{display:flex;justify-content:space-between;gap:8px;margin:5px 0}.empty{text-align:center;color:var(--muted);padding:24px}
 .statsgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.stat{background:#fff;border-radius:13px;padding:10px;box-shadow:0 2px 8px #0000000f}.stat b{display:block;font-size:19px;color:var(--green)}.stats-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.stats-modes button{background:#eee;border-radius:9px;padding:9px;font-weight:850}.stats-modes button.selected{background:var(--brand);color:#fff}
 .chart{display:flex;align-items:flex-end;gap:4px;height:200px;overflow-x:auto;padding-top:12px}.barwrap{min-width:24px;flex:1;text-align:center;font-size:9px}.bar{background:var(--brand);min-height:2px;border-radius:4px 4px 0 0}.tipbar{background:var(--orange)}.barval{font-size:8px;margin-bottom:3px}
@@ -54,7 +61,7 @@ input,textarea,select{width:100%;border:1px solid #d9cfc6;border-radius:9px;padd
 </style>
 </head>
 <body>
-<header><div class="headrow"><div><h1>Taste Home Pro</h1><small>Shërbimi i mbrëmjes</small></div><div class="datebar"><button onclick="shiftWorkDate(-1)">‹</button><input id="workDate" type="date" onchange="saveWorkDate()"><button onclick="setToday()">Sot</button><button onclick="shiftWorkDate(1)">›</button></div></div></header>
+<header><div class="headrow"><div><h1>Taste Home Pro</h1><small>Shërbimi i mbrëmjes</small></div><div class="datebar"><button onclick="shiftWorkDate(-1)">‹</button><input id="workDate" type="date" onchange="saveWorkDate()"><button onclick="shiftWorkDate(1)">›</button></div></div></header>
 <nav>
 <button id="tabTables" class="navbtn active" onclick="showTables()">🪑 Tavolinat</button>
 <button id="tabService" class="navbtn" onclick="showService()">🍽️ Shërbimi</button>
@@ -79,9 +86,9 @@ input,textarea,select{width:100%;border:1px solid #d9cfc6;border-radius:9px;padd
 <section id="tableView" class="hidden">
   <div class="backbar"><button class="back" onclick="showTables()">←</button><div id="tableHeader" class="tabletitle"></div><div id="topTotal" class="topTotal"></div></div>
   <div class="card">
-    <div class="compact2">
-      <div><label>Emri i rezervimit / klientit</label><input id="tableName" placeholder="p.sh. Ella Wise" oninput="updateDetails()"></div>
-      <div><label>Persona</label><input id="reservedPeople" type="number" min="0" inputmode="numeric" placeholder="2" oninput="updateDetails()"></div>
+    <div>
+      <label>Emri i rezervimit / klientit</label>
+      <input id="tableName" placeholder="p.sh. Ella Wise" oninput="updateDetails()">
     </div>
     <div id="autoPeople" class="people">👥 0 persona</div>
     <label>Shënime</label><textarea id="notes" class="notes" placeholder="p.sh. pa alkool..." oninput="updateDetails()"></textarea>
@@ -105,13 +112,28 @@ input,textarea,select{width:100%;border:1px solid #d9cfc6;border-radius:9px;padd
     </div>
   </div>
 
-  <div class="card"><div class="actions">
-    <button class="kitchen" onclick="sendKitchenUpdate()">👨‍🍳 Update Kuzhina</button>
-    <button class="print" onclick="printCurrent()">🖨️ Printo</button>
-    <button class="invoice" onclick="shareCurrent()">🧾 Dërgo faturën</button>
-    <button class="delete" onclick="clearCurrent()">🗑️ Fshije</button>
-    <button class="close" style="grid-column:1/-1" onclick="closeCurrent()">✅ Mbyll tavolinën</button>
-  </div></div>
+  <div class="action-zone">
+    <div class="action-zone-title">Shërbimi</div>
+    <button class="kitchen action-primary" onclick="sendKitchenUpdate()">👨‍🍳 Update Kuzhina</button>
+  </div>
+
+  <div class="action-zone">
+    <div class="action-zone-title">Fatura</div>
+    <div class="action-pair">
+      <button class="print" onclick="printCurrent()">🖨️ Printo</button>
+      <button class="invoice" onclick="shareCurrent()">🧾 Dërgo faturën</button>
+    </div>
+  </div>
+
+  <div class="action-zone">
+    <div class="action-zone-title">Mbyllja e tavolinës</div>
+    <button class="close action-close" onclick="closeCurrent()">✅ Mbyll tavolinën</button>
+  </div>
+
+  <div class="action-zone">
+    <div class="action-zone-title">Kujdes</div>
+    <button class="delete action-delete" onclick="clearCurrent()">🗑️ Fshije pa ruajtur</button>
+  </div>
 </section>
 
 <section id="serviceView" class="hidden"><div id="serviceList"></div></section>
@@ -197,7 +219,7 @@ function save(){localStorage.setItem(DB_KEY,JSON.stringify(db));localStorage.set
 function money(v){return "€"+Number(v||0).toFixed(2)} function stamp(){return new Date().toLocaleString("sq-AL")}
 function total(t){return ITEMS.reduce((s,i)=>s+(Number(db[t].q[i.k])||0)*i.p,0)}
 function menuPeople(t){return ["normal","veg","kids","group"].reduce((s,k)=>s+(Number(db[t].q[k])||0),0)}
-function people(t){return menuPeople(t)||Number(db[t].reservedPeople)||0}
+function people(t){return menuPeople(t)}
 function pending(t,k){return Math.max(0,(db[t].q[k]||0)-(db[t].served[k]||0))}
 function pendingCount(t){return ITEMS.filter(i=>i.type==="drink").reduce((s,i)=>s+pending(t,i.k),0)}
 function hasRequests(t){return Object.values(db[t].requests||{}).some(Boolean)}
@@ -217,7 +239,7 @@ function showService(){hideAll();$("serviceView").classList.remove("hidden");$("
 function showHistory(){hideAll();$("historyView").classList.remove("hidden");$("tabHistory").classList.add("active");$("historyDate").value=$("workDate").value;drawHistory()}
 function showStats(){hideAll();$("statsView").classList.remove("hidden");$("tabStats").classList.add("active");fillStatsControls();drawStats()}
 
-function activeForDate(t,d){return total(t)>0&&(!db[t].workDate||db[t].workDate===d)}
+function activeForDate(t,d){return total(t)>0}
 function liveRows(payment){
  const d=isoDate(),rows=[];
  history.filter(x=>x.date===d&&x.payment===payment).forEach(x=>rows.push({type:"history",id:x.id,name:x.name||"Pa emër",position:x.position||"",total:Number(x.total)||0,paid:payment==="Cash"?true:!!x.cardPaid,tip:Number(x.tip)||0}));
@@ -246,8 +268,8 @@ function drawTables(){
 }
 function addExtraTable(){if(tableCount>=MAX_TABLES)return;tableCount++;normalize(tableCount);db[tableCount].position=positionFor(tableCount);save();drawTables()}
 
-function openTable(t){current=t;hideAll();$("tableView").classList.remove("hidden");$("tableName").value=db[t].name||"";$("reservedPeople").value=db[t].reservedPeople||"";$("notes").value=db[t].notes||"";$("cardNote").value=db[t].cardNote||"";$("received").value=db[t].received!==""?db[t].received:"";drawCurrent()}
-function updateDetails(){const b=db[current];b.name=$("tableName").value.trim();b.reservedPeople=Math.max(0,Number($("reservedPeople").value)||0);b.notes=$("notes").value.trim();b.cardNote=$("cardNote").value.trim();b.workDate=b.workDate||isoDate();b.updated=stamp();save();drawHeaderOnly()}
+function openTable(t){current=t;hideAll();$("tableView").classList.remove("hidden");$("tableName").value=db[t].name||"";$("notes").value=db[t].notes||"";$("cardNote").value=db[t].cardNote||"";$("received").value=db[t].received!==""?db[t].received:"";drawCurrent()}
+function updateDetails(){const b=db[current];b.name=$("tableName").value.trim();b.notes=$("notes").value.trim();b.cardNote=$("cardNote").value.trim();b.workDate=b.workDate||isoDate();b.updated=stamp();save();drawHeaderOnly()}
 function drawHeaderOnly(){$("tableHeader").textContent=`${db[current].position} · ${db[current].name||"Pa emër"}`;$("topTotal").textContent=money(total(current));$("autoPeople").textContent=`👥 ${people(current)} persona`;$("tableTotal").textContent=money(total(current));drawTip()}
 function setPayment(p){db[current].payment=p;if(p==="Cash")db[current].cardPaid=true;else if(p==="Card"&&db[current].cardPaid===true)db[current].cardPaid=false;db[current].workDate=db[current].workDate||isoDate();db[current].updated=stamp();save();drawPayment();drawLive()}
 function setCardPaid(v){db[current].cardPaid=!!v;db[current].updated=stamp();save();drawPayment();drawLive()}
@@ -264,7 +286,7 @@ function drawCurrent(){
 }
 function drawDrinks(){
  $("drinkTiles").innerHTML="";ITEMS.filter(i=>i.type==="drink").forEach(i=>{const q=db[current].q[i.k]||0,p=pending(current,i.k),b=document.createElement("button");b.className="drinktile";b.innerHTML=`${p?`<span class="badgealert">${p}</span>`:""}<div class="ico">${i.ico}</div><div class="dn">${i.n}</div><div class="dp">${money(i.p)} · kliko +1</div>${q?`<div class="meta">${q} porositur</div>`:""}`;b.onclick=()=>change(i.k,1);$("drinkTiles").appendChild(b)});
- $("drinkDetails").innerHTML="";ITEMS.filter(i=>i.type==="drink"&&(db[current].q[i.k]||0)>0).forEach(i=>{const q=db[current].q[i.k]||0,s=Math.min(db[current].served[i.k]||0,q),p=pending(current,i.k),d=document.createElement("div");d.className="drinkdetail";d.innerHTML=`<div class="drinkhead"><b>${i.ico} ${i.n}</b><button class="minus" onclick="change('${i.k}',-1)">−</button></div><div class="delivery"><div>Porositur<b>${q}</b></div><div>Dërguar<b>${s}</b></div><div class="pending">Pret<b>${p}</b></div></div><div class="deliverBtns"><button ${p===0?"disabled":""} onclick="markOne('${i.k}')">✓ Dërgova 1</button><button ${p===0?"disabled":""} onclick="markAll('${i.k}')">✓ Të gjitha</button></div>`;$("drinkDetails").appendChild(d)});
+ $("drinkDetails").innerHTML="";ITEMS.filter(i=>i.type==="drink"&&(db[current].q[i.k]||0)>0).forEach(i=>{const q=db[current].q[i.k]||0,s=Math.min(db[current].served[i.k]||0,q),p=pending(current,i.k),d=document.createElement("div");d.className="drinkdetail";d.innerHTML=`<div class="drinkhead"><b>${i.ico} ${i.n}</b><button class="minus" onclick="change('${i.k}',-1)">−</button></div><div class="delivery"><div>Porositur<b>${q}</b></div><div>Dërguar<b>${s}</b></div><div class="pending">Pret<b>${p}</b></div></div><div class="deliverBtns single"><button ${p===0?"disabled":""} onclick="markAll('${i.k}')">✓ U DËRGUAN${p?` ${p}`:""}</button></div>`;$("drinkDetails").appendChild(d)});
 }
 function change(k,d){db[current].q[k]=Math.max(0,(db[current].q[k]||0)+d);if((db[current].served[k]||0)>db[current].q[k])db[current].served[k]=db[current].q[k];db[current].workDate=db[current].workDate||isoDate();db[current].updated=stamp();save();drawCurrent();drawLive()}
 function markOne(k){db[current].served[k]=Math.min(db[current].q[k]||0,(db[current].served[k]||0)+1);db[current].updated=stamp();save();drawCurrent();drawLive()}
